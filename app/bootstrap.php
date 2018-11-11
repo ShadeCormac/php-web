@@ -12,4 +12,9 @@
     spl_autoload_register(function($className) {
         require_once 'lib/'.$className.'.php';
     });
+
+    //Load Url_helper
+    require_once 'helpers/url_helper.php';
+    //Load session_helper
+    require_once 'helpers/session_helper.php';
 ?>

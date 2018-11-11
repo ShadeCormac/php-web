@@ -16,10 +16,10 @@
 
         public function __construct(){
             //Setting Data source string
-            $dataSource = 'mysql:host='. $this->host . ';dbname=' . $this->name;
+            $dataSource = 'mysql:host='. $this->host . ';dbname=' . $this->dbName . ';charset=utf8;';
             $options =[
                 PDO::ATTR_PERSISTENT => true,
-                PDO::ATTR_ERRORMODE => PDO::ERRMODE_EXCEPTION
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
 
             ];
             //Create PDO instance
@@ -57,17 +57,18 @@
             $this->statement->bindValue($param, $value, $type);
         }
 
-        //Execute the statement
+        //Execute the statement(for insert, update and delete)
         public function execute(){
             return $this->statement->execute();
         }
 
-        //Get results set as array of objects
+        //Get results set as array of objects(for select statement)
         public function resultSet(){
             $this->execute();
             return $this->statement->fetchAll(PDO::FETCH_OBJ);
         }
         //Get single row as object
+        //select but return 1 row
         public function getSingle(){
             $this->execute();
             return $this->statement->fetch(PDO::FETCH_OBJ);
