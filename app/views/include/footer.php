@@ -1,8 +1,22 @@
-</div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
-</body>
+
+        <script src="<?php echo __URL__; ?>/js/modernizr.custom.63321.js" type="text/javascript"></script>
+        <script src="<?php echo __URL__; ?>/js/jquery-1.10.0.min.js" type="text/javascript"></script>
+        <script src="<?php echo __URL__; ?>/js/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="<?php echo __URL__; ?>/js/bootstrap.js" type="text/javascript"></script>
+        <script src="<?php echo __URL__; ?>/js/placeholder.js" type="text/javascript"></script>
+        <script src="<?php echo __URL__; ?>/js/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+        <script src="<?php echo __URL__; ?>/js/masonry.pkgd.min.js" type="text/javascript"></script>
+        <script src="<?php echo __URL__; ?>/js/jquery.swipebox.min.js" type="text/javascript"></script>
+        <script src="<?php echo __URL__; ?>/js/farbtastic/farbtastic.js" type="text/javascript"></script>
+        <script src="<?php echo __URL__; ?>/js/options.js" type="text/javascript"></script>
+        <script src="<?php echo __URL__; ?>/js/plugins.js" type="text/javascript"></script>
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+        <!-- ======================================================================
+                                        END SCRIPTS
+        ======================================================================= -->
+    </body>
+
 </html>

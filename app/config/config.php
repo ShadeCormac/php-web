@@ -2,7 +2,9 @@
     //App root
     define('__ROOT__', dirname(dirname(__FILE__)));
     //Url root
-    define('__URL__', 'http://localhost:8080/php-web');
+    //if linux:
+    define('__URL__', 'http://localhost/php-web');
+    //if windows, the URL is http://localhost:8080/php-web'
     //Site's name
     define('__SITENAME__', 'Shopping Webbu');
 
