@@ -16,9 +16,9 @@
                                     Style CSS + Google Fonts
         ======================================================================= -->
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,700italic,400,600,700,800" rel="stylesheet" type="text/css"> 
-        <link rel="stylesheet" href="<?php echo __URL__; ?>/css/bootstrap.css" type='text/css'/>    
+        <!-- <link rel="stylesheet" href="<?php echo __URL__; ?>/css/bootstrap.css" type='text/css'/>     -->
         <link rel="stylesheet" href="<?php echo __URL__; ?>/css/style.css" />
-        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
 
     <body>

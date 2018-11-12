@@ -2,6 +2,7 @@
             <div class="container">
                 
                 <div class="header-middle-info">
+                <div class="row">
                     <div class="col-md-4">
                         <div class="logo">
                             <a href="index.html">
@@ -9,31 +10,31 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-8 mx-auto">
                         <ul class="header-middle-account">
-                        
                             <li><a href="<?=__URL__?>/cart"><i class="icon-330" title="My account"></i> My account</a></li>
                             <li><a href="<?=__URL__?>/accounts/register"><i class="icon-351" title="Register"></i>Register</a></li>
                             <li><a href="<?=__URL__?>/accounts/login"><i class="icon-352" title="Login"></i> Login</a></li>
                             <li><a href="<?=__URL__?>/checkout"><i class="icon-259" title="Checkout"></i> Checkout</a></li>
                         </ul>
                     </div>
+                    </div>
                     <div class="clear"></div>
                 </div>
                 <div class="menu">
                     <div class="search-cart">
                         <form class="search form-inline">
-                            <select class='form-control center-block mt-5' style="width:auto; margin-top:4px;">
-                              <option value selected="name">Ten San Pham</option>
-                              <option value="manufacture">Nha san xuat</option> 
+                            <select class='form-control center-block' style="width:auto; margin-top:2px;">
+                              <option value selected="name">Tên sản phẩm</option>
+                              <option value="manufacture">Nhà sản xuất</option> 
                             </select>
                             <input type="text" class="search-line" placeholder="Search" name="search" />
                             <input type="submit" value="" class="search-button" />
                         </form>
                         <div class="cart-all">
-                            <i class="icon-19" title="19"></i>$ (234)
+                            <i class="icon-19" title="19"></i> <?=3;?>
                             <div class="inside-cart">
-                                <p>2 products in the shopping bag</p>
+                                <p>xx products in the shopping bag</p>
                                 <ul>
                                     <li>
                                         <div class="inside-cart-image"><img src="<?=__URL__ ?>/images/photos/image-9.jpg" alt="product name" /></div>

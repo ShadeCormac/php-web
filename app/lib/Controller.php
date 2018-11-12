@@ -2,7 +2,7 @@
     //Base controller
     //Loads the models and views
     class Controller {
-        //Load model
+        //Load Model
         public function model($model){
             //require the associtated model
             require_once '../app/models/' . $model .'.php';
