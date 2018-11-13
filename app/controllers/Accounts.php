@@ -22,8 +22,14 @@
                 //validate username
                 if(empty($data['username'])){
                     $data['username_error'] = 'Username must be filled.';
+                }else {
+                    //check for used username
+                    if($this->accountModel->findAccountByUsername($data['username'])){
+                        $data['username_error'] = 'Username is already taken.';
+                    }
+                    
                 }
-                //check for used username
+                
 
                 //validate password
                 if(empty($data['password'])){
@@ -32,7 +38,7 @@
                     $data['password_error'] = 'Password must be at least 6 characters.';
                 }
 
-                //validate confirmpassword
+                //validate confirm password
                 if(empty($data['confirm_password'])){
                     $data['confirm_password_error'] = 'Confirm password must be filled.';
                 }else if(strcmp($data['password'], $data['confirm_password']) !== 0){
@@ -41,7 +47,15 @@
 
                 if(empty($data['username_error']) && empty($data['password_error']) && empty($data['confirm_password_error'])){
                     //success
-                    echo'succ';
+                    if($this->accountModel->addAccount($data['username'], password_hash($data['password'], PASSWORD_DEFAULT)) > 0){
+                        //added
+                        flash('register_success', 'Register suceeded, now you can log in.');
+                        redirect('accounts/login');
+                    }else{
+                        //something went wrong
+                        die('something went wrong..');
+                    }
+
                 }else{
                     $this->view('accounts/register', $data);
                 }

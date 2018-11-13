@@ -2,7 +2,8 @@
 <?php //print_r($data)?>
 <div class="content">
     <div class="container">
-        <div class="site-title"><div class="site-inside"><span>Login</span></div></div>         
+        <div class="site-title"><div class="site-inside"><span>Login</span></div></div>      
+            <?php flash('register_success'); ?>   
             <div class="row"> 
                 <div class="col-md-6 mx-auto">
                     <div class="login-form-box">
