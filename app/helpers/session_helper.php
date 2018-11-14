@@ -3,7 +3,8 @@
     //flash message
     //How to use: flash('login_success', 'You are logged in!');
     //display in view: flash('login_success')
-    function flash($name ='', $message = '', $class='alert alert-success'){
+    //alert-regular; alert-warning; alert-succesuful; alert-retry; alert-attention
+    function flash($name ='', $message = '', $class='alert alert-succesuful'){
         if(!empty($name)){
             //set flash message
             if(!empty($message) && empty($_SESSION[$name])){
@@ -21,7 +22,7 @@
             } //else display in view
             else if(empty($message) && !empty($_SESSION[$name])){
                 $class = !empty($_SESSION[$name. '_class'])? $_SESSION[$name. '_class'] : '';
-                echo '<div class="' . $class . '" id="msg-flash">' . $_SESSION[$name] . '</div>';
+                echo '<div class="' . $class . '" id="msg-flash"><h4>' . $_SESSION[$name] . '</h4></div>';
                 unset($_SESSION[$name]);
                 unset($_SESSION[$class]);
             }

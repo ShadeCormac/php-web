@@ -12,11 +12,10 @@
                     </div>
                     <div class="col-md-8 mx-auto">
                         <ul class="header-middle-account">
-                            <li><a href="<?=__URL__?>/cart"><i class="icon-330" title="My account"></i> My account</a></li>
-                            <li><a href="<?=__URL__?>/accounts/register"><i class="icon-351" title="Register"></i>Register</a></li>
-                            <li><a href="<?=__URL__?>/accounts/login"><i class="icon-352" title="Login"></i> Login</a></li>
-                            <li><a href="<?=__URL__?>/checkout"><i class="icon-259" title="Checkout"></i> Checkout</a></li>
-                        </ul>
+                            <?= empty($_SESSION['isLoggedIn'])?'<li><a href="<?=__URL__?>/accounts/detail"><i class="icon-330" title="My account"></i> My account</a></li>' :'<li><a href="<?=__URL__?>/accounts/login"><i class="icon-352" title="Login"></i> Login</a></li>' ;?>
+                            <li><a href="<?=__URL__?>/accounts/register"><i class="icon-351" title="Register"></i>Register</a></li>    
+                            <li><a href="<?=__URL__?>/cart/checkout"><i class="icon-259" title="Checkout"></i> Checkout</a></li>
+                        </ul>   
                     </div>
                     </div>
                     <div class="clear"></div>
@@ -24,17 +23,19 @@
                 <div class="menu">
                     <div class="search-cart">
                         <form class="search form-inline">
-                            <select class='form-control center-block' style="width:auto; margin-top:2px;">
-                              <option value selected="name">Tên sản phẩm</option>
-                              <option value="manufacture">Nhà sản xuất</option> 
+                            
+                            <select class='form-control text-center' style="width:auto; margin-top:3px;; height:36px">
+                              <option value selected="name">Product name</option>
+                              <option value="manufacture">Manufacturer name</option>
                             </select>
                             <input type="text" class="search-line" placeholder="Search" name="search" />
                             <input type="submit" value="" class="search-button" />
                         </form>
-                        <div class="cart-all">
-                            <i class="icon-19" title="19"></i> <?=3;?>
+                        <div class="cart-all">    
+                            <a href="<?=__URL__ ;?>/cart"><i class="icon-19" title="Cart"></i></a>
+
                             <div class="inside-cart">
-                                <p>xx products in the shopping bag</p>
+                                <p><?='SELECTEDPRODUCTS_COUNT';?> products in the shopping bag</p>
                                 <ul>
                                     <li>
                                         <div class="inside-cart-image"><img src="<?=__URL__ ?>/images/photos/image-9.jpg" alt="product name" /></div>
@@ -58,7 +59,7 @@
                     <div class="repsonsive-menu"><i class="icon-406" title="406"></i> Menu</div>
                     <ul>
                       <li><a href="<?=__URL__?>/pages" >Home</a></li>
-                      <li class="menu-item-has-children active"><a href="#">Categories</a>
+                      <li class="menu-item-has-children"><a href="#">Categories</a>
                         <ul>
                           
                           <li><a href="<?=__URL__?>/products/laptop">Laptop</a></li>

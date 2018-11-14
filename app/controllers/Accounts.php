@@ -59,7 +59,7 @@
                     //success
                     if($this->accountModel->addAccount($data['username'], password_hash($data['password'], PASSWORD_DEFAULT)) > 0){
                         //added
-                        flash('register_success', 'Register suceeded, now you can log in.');
+                        flash('register_success', 'Registered, now you can log in.');
                         redirect('accounts/login');
                     }else{
                         //something went wrong
