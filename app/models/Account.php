@@ -4,8 +4,8 @@
         public function __construct(){
             $this->db = new Database;
         }
-        public function getDetail($id){
-            $this->db->query('SELECT * FROM ACCOUNT WHERE ACCOUNTID = :id');
+        public function getUserDetail($id){
+            $this->db->query('SELECT * FROM account WHERE account = :id');
             $this->db->bind(':id', $id);
             $data =  $this->db->getSingle();
             
@@ -13,7 +13,7 @@
             
         }
         public function findAccountByUsername($username){
-            $this->db->query('SELECT * FROM ACCOUNT WHERE USERNAME = :username');
+            $this->db->query('SELECT * FROM account WHERE username = :username');
             $this->db->bind(':username', $username);
             //SELECT statement -> use getSingleI()/resultSet()
             $this->db->getSingle();
@@ -23,7 +23,7 @@
             return false;
         }
         public function addAccount($username, $password){
-            $this->db->query('INSERT INTO ACCOUNT(USERNAME, PASS)
+            $this->db->query('INSERT INTO account(username, pass)
                             VALUES(:username, :pass);
                             ');
             $this->db->bind(':username', $username);

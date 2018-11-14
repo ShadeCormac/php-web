@@ -3,7 +3,7 @@
     define('__ROOT__', dirname(dirname(__FILE__)));
     //Url root
     //linux's port: 80, windows's port: 8080;
-    define('__URL__', 'http://localhost:8080/php-web');
+    define('__URL__', 'http://localhost/php-web');
     
     //Site's name
     define('__SITENAME__', 'Shopping Webbu');

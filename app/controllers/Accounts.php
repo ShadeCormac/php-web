@@ -4,6 +4,16 @@
             $this->accountModel = $this->model('Account');
         }
 
+        public function index(){
+            if(!empty($_SESSION['isLoggedIn'])){
+                //already logged in, redirect to details
+                redirect('accounts/detail');
+            }else{
+                //not log in,redirect to log in page
+                redirect('accounts/login');
+            }
+        }
+
         public function register(){
             //check for POST
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -103,7 +113,9 @@
                 }
 
                 if(empty($data['username_error']) && empty($data['password_error'])){
-                   echo 'succ'; 
+                   $_SESSION['isLoggedIn'] = true;
+                   //getuserid
+                   $_SESSION['userid'] = ''; 
                 }else{
                     $this->view('accounts/login', $data);
                 }
@@ -122,14 +134,24 @@
         }
 
         public function detail($id){
-            $row = $this->accountModel->getDetail($id);
-
-            $data = [
-                'detail' => $row
-            ];
-            redirect('Pages');
-            $this->view('accounts/detail', $data);
-            
+            if(!empty($_SESSION['isLoggedIn'])) {
+                if($_SESSION['userid'] == $id){
+                    $row = $this->accountModel->getUserDetail($id);
+                    $data = [
+                        'detail' => $row
+                    ];
+                    //redirect('accounts');
+                    $this->view('accounts/detail', $data);
+                } else {
+                    //other user tries to access 
+                    redirect('pages/index');
+                }
+                
+            }     
+        }
+        public function logout(){
+            session_destroy();
+            $this->view('pages/index', []);
         }
     }
 ?>

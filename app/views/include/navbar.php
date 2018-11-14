@@ -61,10 +61,10 @@
                       <li class="menu-item-has-children active"><a href="#">Categories</a>
                         <ul>
                           
-                          <li><a href="<?=__URL__?>products/laptop">Laptop</a></li>
-                          <li><a href="<?=__URL__?>products/mobile">Mobile Phone</a></li>
-                          <li><a href="<?=__URL__?>products/headphone">Headphone</a></li>
-                          <li><a href="<?=__URL__?>products/keyboard">Keyboard</a></li>
+                          <li><a href="<?=__URL__?>/products/laptop">Laptop</a></li>
+                          <li><a href="<?=__URL__?>/products/mobile">Mobile Device</a></li>
+                          <li><a href="<?=__URL__?>/products/headphone">Headphone</a></li>
+                          <li><a href="<?=__URL__?>/products/keyboard">Keyboard</a></li>
                           
                         </ul>
                         <li><a href="<?=__URL__?>/pages/about">About us</a></li>

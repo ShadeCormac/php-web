@@ -4,7 +4,7 @@
         <div class="footer">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-2 col-xs-6">
+                    <div class="col-md-3 col-xs-6">
                         <ul class="socials">
                             <li><a href="#"><img src="<?=__URL__;?>/images/elements/socials/facebook.png" alt="facebook"/>Facebook</a></li>
                             <li><a href="#"><img src="<?=__URL__;?>/images/elements/socials/twitter.png" alt="twitter"/>Twitter</a></li>
@@ -12,7 +12,7 @@
                             <li><a href="#"><img src="<?=__URL__;?>/images/elements/socials/googleplus.png" alt="google"/>Google+</a></li>
                         </ul>
                     </div>
-                    <div class="col-md-2 col-xs-6">
+                    <div class="col-md-3 col-xs-6">
                         <ul>
                             <li><a href="#">Register now</a></li>
                             <li><a href="#">Subscribe for newsletter</a></li>
@@ -25,7 +25,7 @@
                             <li><a href="#">About us</a></li>
                         </ul>
                     </div>
-                    <div class="col-md-2 col-xs-6">
+                    <div class="col-md-3 col-xs-6">
                         <ul>
                             <li><a href="#">Payments</a></li>
                             <li><a href="#">Size guide</a></li>
@@ -36,7 +36,7 @@
                             <li><a href="#">Security & privacy</a></li>
                         </ul>
                     </div>
-                    <div class="col-md-2 col-xs-6">
+                    <div class="col-md-3 col-xs-6">
                         <ul class="menu-item">
                             <li><a href="#">Home</a></li>
                             <li><a href="#">Laptop</a></li>
@@ -47,16 +47,7 @@
                             <li><a href="#">Contact</a></li>
                         </ul>
                     </div>
-                    <div class="col-md-4">
-                        <div class="subscription">
-                            <div class="subscription-title">Newsletter subscribe</div>
-                            <form class="subscription" id="newsletter" method="post">
-                                <input type="text" name="newsletter-name" placeholder="Name" class="subscription-line">
-                                <input type="text" name="newsletter-email" placeholder="E-mail" class="subscription-line">
-                                <input type="submit" value="send" class="button-5">
-                            </form>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             <div class="container">
