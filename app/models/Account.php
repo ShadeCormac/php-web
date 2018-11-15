@@ -4,14 +4,25 @@
         public function __construct(){
             $this->db = new Database;
         }
+
+        
+
         public function getUserDetail($id){
-            $this->db->query('SELECT * FROM account WHERE account = :id');
+            $this->db->query('SELECT * FROM account WHERE AccountId = :id');
             $this->db->bind(':id', $id);
             $data =  $this->db->getSingle();
             
             return $data;
             
         }
+
+        public function getUserPassword($username){
+            $this->db->query('SELECT * FROM account Where UserName = :username');
+            $this->db->bind(':username', $username);
+            $data = $this->db->getSingle();
+            return $data->Pass;
+        }
+
         public function findAccountByUsername($username){
             $this->db->query('SELECT * FROM account WHERE username = :username');
             $this->db->bind(':username', $username);
@@ -22,7 +33,7 @@
             }
             return false;
         }
-        public function addAccount($username, $password){
+        public function register($username, $password){
             $this->db->query('INSERT INTO account(username, pass)
                             VALUES(:username, :pass);
                             ');

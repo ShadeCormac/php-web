@@ -5,15 +5,22 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="logo">
-                            <a href="index.html">
+                            <a href="<?=__URL__ ;?>">
                                 <img src="<?=__URL__ ?>/images/elements/logo.png" alt="site logo" />
                             </a>
                         </div>
                     </div>
                     <div class="col-md-8 mx-auto">
                         <ul class="header-middle-account">
-                            <?= empty($_SESSION['isLoggedIn'])?'<li><a href="<?=__URL__?>/accounts/detail"><i class="icon-330" title="My account"></i> My account</a></li>' :'<li><a href="<?=__URL__?>/accounts/login"><i class="icon-352" title="Login"></i> Login</a></li>' ;?>
-                            <li><a href="<?=__URL__?>/accounts/register"><i class="icon-351" title="Register"></i>Register</a></li>    
+                            
+                            <?= !empty($_SESSION['isLoggedIn'])?
+                            '<li><a href="'. __URL__ . '/accounts/detail"><i class="icon-330" title="My account"></i> My account</a></li>
+                            <li><a href="'. __URL__ . '/accounts/logout" ><i class="icon-352" title="Logout"></i>Log out</a></li>
+                            ' 
+                            :'<li><a href="'. __URL__ . '/accounts/login"><i class="icon-352" title="Login"></i> Login</a></li>
+                            <li><a href="'. __URL__ . '/accounts/register"><i class="icon-351" title="Register"></i>Register</a></li> 
+                            ' ;?>   
+                               
                             <li><a href="<?=__URL__?>/cart/checkout"><i class="icon-259" title="Checkout"></i> Checkout</a></li>
                         </ul>   
                     </div>

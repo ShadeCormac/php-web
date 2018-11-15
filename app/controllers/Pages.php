@@ -2,6 +2,10 @@
     class Pages extends Controller{
         public function __construct(){
             //echo "pages loaded";
+            $this->productModel = $this->model('Product');
+            $data = $this->productModel->getItem();
+            
+            $this->view('pages/index', $data);
         }
         //always has to have index function
         public function index(){

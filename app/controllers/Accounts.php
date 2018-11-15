@@ -57,7 +57,7 @@
 
                 if(empty($data['username_error']) && empty($data['password_error']) && empty($data['confirm_password_error'])){
                     //success
-                    if($this->accountModel->addAccount($data['username'], password_hash($data['password'], PASSWORD_DEFAULT)) > 0){
+                    if($this->accountModel->register($data['username'], password_hash($data['password'], PASSWORD_DEFAULT)) > 0){
                         //added
                         flash('register_success', 'Registered, now you can log in.');
                         redirect('accounts/login');
@@ -102,20 +102,33 @@
 
                 if(empty($data['username'])){
                     $data['username_error'] = 'Username must be filled.';
-                }else{
+                }else if(!empty($data['username'])){
                     //hit database check for username is in db
+                    if(!$this->accountModel->findAccountByUserName($data['username'])){
+                        $data['username_error'] = "Username does not exist.";
+                        
+                    }
                 }
+                //NEED FIX
 
                 if(empty($data['password'])){
                     $data['password_error'] = 'Password must be filled.';
-                }else{
+                }else {
                     //hit database for password
+                    $hashPass = $this->accountModel->getUserPassword($data['username']);
+                    if(($hashPass !== NULL) && !password_verify($data['password'], $hashPass)){
+                        $data['password_error'] = "Password does not match.";
+                    }
                 }
 
                 if(empty($data['username_error']) && empty($data['password_error'])){
                    $_SESSION['isLoggedIn'] = true;
                    //getuserid
-                   $_SESSION['userid'] = ''; 
+                   $user = $this->accountModel->getUserDetail($data['username']);
+                   $_SESSION['userid'] = $user->AccountId;
+                   $_SESSION['usertype'] = $user->Type;
+                   //redirect to load controller if needed
+                   redirect('pages/index');
                 }else{
                     $this->view('accounts/login', $data);
                 }
@@ -133,25 +146,19 @@
             }
         }
 
-        public function detail($id){
-            if(!empty($_SESSION['isLoggedIn'])) {
-                if($_SESSION['userid'] == $id){
-                    $row = $this->accountModel->getUserDetail($id);
+        public function detail(){
+            if(!empty($_SESSION['isLoggedIn'])) {              
+                    $row = $this->accountModel->getUserDetail($_SESSION['userid']);
                     $data = [
                         'detail' => $row
                     ];
                     //redirect('accounts');
-                    $this->view('accounts/detail', $data);
-                } else {
-                    //other user tries to access 
-                    redirect('pages/index');
-                }
-                
+                    $this->view('accounts/detail', $data); 
             }     
         }
         public function logout(){
             session_destroy();
-            $this->view('pages/index', []);
+            redirect('pages/index');
         }
     }
 ?>
