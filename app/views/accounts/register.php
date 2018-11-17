@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="site-title"><div class="site-inside"><span>Register</span></div></div>         
                     <div class="row">  
-                        <div class="col-md-6 mx-auto">
+                        <div class="col-md-6 mx-auto col-xs-offset-3">
                             <form class="register-form" action="<?=__URL__;?>/accounts/register" method="POST">
                                 <h3>Register</h3> 
                                 <div class="form-group">

@@ -66,15 +66,17 @@
                     <div class="repsonsive-menu"><i class="icon-406" title="406"></i> Menu</div>
                     <ul>
                       <li><a href="<?=__URL__?>/pages" >Home</a></li>
-                      <li class="menu-item-has-children"><a href="#">Categories</a>
-                        <ul>
-                          
-                          <li><a href="<?=__URL__?>/products/laptop">Laptop</a></li>
-                          <li><a href="<?=__URL__?>/products/mobile">Mobile Device</a></li>
-                          <li><a href="<?=__URL__?>/products/headphone">Headphone</a></li>
-                          <li><a href="<?=__URL__?>/products/keyboard">Keyboard</a></li>
-                          
-                        </ul>
+
+                        <li class="menu-item-has-children ">
+                        <div class="small hidden-xs"><a href="#">Categories</a></div>                  
+                            <ul>  
+                                <li><a href="<?=__URL__?>/products/viewproducts/laptop">Laptop</a></li>
+                                <li><a href="<?=__URL__?>/products/viewproducts/mobile">Mobile Device</a></li>
+                                <li><a href="<?=__URL__?>/products/viewproducts/headphone">Headphone</a></li>
+                                <li><a href="<?=__URL__?>/products/viewproducts/keyboard">Keyboard</a></li>  
+                            </ul>
+                        </li>
+                        
                         <li><a href="<?=__URL__?>/pages/about">About us</a></li>
                         <li><a href="<?=__URL__?>/pages/contact">Contact</a></li>
                     </ul>

@@ -6,10 +6,10 @@
                     <div class="row">
                         <div class="col-md-6">
 
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis expedita ullam accusantium consequatur voluptate quisquam velit magni, blanditiis ducimus facilis illo asperiores, commodi optio et libero quod possimus error animi!</p>
+                            <img src="<?=__URL__ . $data['product']->ImageSource?>" alt="<?=$data['product']->ProductName?>">
                         </div>
                         <div class="col-md-6">
-                            <h2>_NAME_</h2>
+                            <h2><?=$data['product']->ProductName?></h2>
                             
                             
                             <div class="clear"></div>
@@ -17,12 +17,12 @@
                                 <input type="button" value="-" class="minus">
                                 <input type="number" step="1" min="1" name="quantity" value="1" title="Qty" class="input-text qty text">
                                 <input type="button" value="+" class="plus">
-                                <span>10 sold / 12 available</span>
+                                <span><?=$data['product']->SellCount?> sold / <?=$data['product']->Quantity?> available</span>
                             </div>
                             <hr/>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="product-price">PRICE : <span>$170</span> $150</div>
+                                    <div class="product-price">PRICE : <?=number_format($data['product']->Price)?> VND</div>
                                 </div>
                                 <div class="col-md-6">
                                     <a href="#" class="button-2">add to shopping bag</a>
@@ -35,13 +35,8 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="description">
-                                    <p>Sed bibendum cursus lacus, quis luctus libero aliquam nec. Praesent egestas leo mi, eu laoreet libero mattis sed. Curabitur leo nulla, eleifend quis consequat vitae, feugiat sit amet massa.</p>
-                                    <ul class="product-details">
-                                        <li>Weight - 2 kg</li>
-                                        <li>Color - red</li>
-                                        <li>Category - dress</li>
-                                        <li>tags - <a href="#">dress</a>, <a href="#">red</a>, <a href="#">woman</a></li>
-                                    </ul>
+                                    <p><?=nl2br($data['product']->Description)?></p>
+                                    
                                     <ul class="social-share">
                                         <li><span>Share</span></li>
                                         <li><a href="#"><i class="icon-160" title="161"></i></a></li>
@@ -73,7 +68,7 @@
                                 <div class="product">
                                     <div class="product-cover">
                                         <div class="product-cover-hover"><span><a href="product.html">View</a></span></div>
-                                        <img src="images/photos/recommand-4.jpg" alt="product name" />
+                                        <img src="<?=__URL__;?>/images/photos/recommand-4.jpg" alt="product name" />
                                     </div>    
                                     <div class="product-details">  
                                         <h1><a href="#">Black Dress</a></h1>
@@ -89,7 +84,7 @@
                                 <div class="product">
                                     <div class="product-cover">
                                         <div class="product-cover-hover"><span><a href="product.html">View</a></span></div>
-                                        <img src="images/photos/recommand-3.jpg" alt="product name" />
+                                        <img src="<?=__URL__;?>/images/photos/recommand-3.jpg" alt="product name" />
                                     </div>  
                                     <div class="product-details">    
                                         <h1><a href="#">Black Dress</a></h1>
@@ -106,7 +101,7 @@
                                 <div class="product">
                                     <div class="product-cover">
                                         <div class="product-cover-hover"><span><a href="product.html">View</a></span></div>
-                                        <img src="images/photos/recommand-2.jpg" alt="product name" />
+                                        <img src="<?=__URL__;?>/images/photos/recommand-2.jpg" alt="product name" />
                                     </div>  
                                     <div class="product-details">    
                                         <h1><a href="#">Black Dress</a></h1>
@@ -123,7 +118,7 @@
                                 <div class="product">
                                     <div class="product-cover">
                                         <div class="product-cover-hover"><span><a href="product.html">View</a></span></div>
-                                        <img src="images/photos/recommand-1.jpg" alt="product name" />
+                                        <img src="<?=__URL__;?>/images/photos/recommand-1.jpg" alt="product name" />
                                     </div> 
                                     <div class="product-details">     
                                         <h1><a href="#">Black Dress</a></h1>
@@ -140,7 +135,7 @@
                                 <div class="product">
                                     <div class="product-cover">
                                         <div class="product-cover-hover"><span><a href="product.html">View</a></span></div>
-                                        <img src="images/photos/recommand-4.jpg" alt="product name" />
+                                        <img src="<?=__URL__;?>/images/photos/recommand-4.jpg" alt="product name" />
                                     </div>  
                                     <div class="product-details">    
                                         <h1><a href="#">Red Dress</a></h1>
@@ -157,7 +152,7 @@
                                 <div class="product">
                                     <div class="product-cover">
                                         <div class="product-cover-hover"><span><a href="product.html">View</a></span></div>
-                                        <img src="images/photos/recommand-3.jpg" alt="product name" />
+                                        <img src="<?=__URL__;?>/images/photos/recommand-3.jpg" alt="product name" />
                                     </div>   
                                     <div class="product-details">   
                                         <h1><a href="#">Burgunday Dress</a></h1>
@@ -174,7 +169,7 @@
                                 <div class="product">
                                     <div class="product-cover">
                                         <div class="product-cover-hover"><span><a href="product.html">View</a></span></div>
-                                        <img src="images/photos/recommand-2.jpg" alt="product name" />
+                                        <img src="<?=__URL__;?>/images/photos/recommand-2.jpg" alt="product name" />
                                     </div>  
                                     <div class="product-details">    
                                         <h1><a href="#">Jacquard Dress</a></h1>
@@ -191,7 +186,7 @@
                                 <div class="product">
                                     <div class="product-cover">
                                         <div class="product-cover-hover"><span><a href="product.html">View</a></span></div>
-                                        <img src="images/photos/recommand-1.jpg" alt="product name" />
+                                        <img src="<?=__URL__;?>/images/photos/recommand-1.jpg" alt="product name" />
                                     </div>   
                                     <div class="product-details">   
                                         <h1><a href="#">Jacquard Dress</a></h1>

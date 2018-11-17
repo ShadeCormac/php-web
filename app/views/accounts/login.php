@@ -5,7 +5,7 @@
         <div class="site-title"><div class="site-inside"><span>Login</span></div></div>      
             <?php flash('register_success'); ?>   
             <div class="row"> 
-                <div class="col-md-6 mx-auto">
+                <div class="col-md-6 mx-auto col-xs-offset-3">
                     <div class="login-form-box">
                             <form class="login-form" action="<?=__URL__;?>/accounts/login" method="POST">
                                 <h3>Login now</h3>
