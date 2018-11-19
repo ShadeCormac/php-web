@@ -29,11 +29,12 @@
                 </div>
                 <div class="menu">
                     <div class="search-cart">
-                        <form class="search form-inline">
+                        <form class="search form-inline" action='<?=__URL__?>/products/search/' method='POST'>
                             
-                            <select class='form-control text-center' style="width:auto; margin-top:3px;; height:36px">
-                              <option value selected="name">Product name</option>
-                              <option value="manufacture">Manufacturer name</option>
+                            <select name='search-method' class='form-control text-center' style="width:auto; margin-top:3px;; height:36px">
+                              <option  value="ProductName" selected >Product name</option>
+                              <option value="Producer" >Manufacturer name</option>
+                              <option value="CategoryName">Type</option>
                             </select>
                             <input type="text" class="search-line" placeholder="Search" name="search" />
                             <input type="submit" value="" class="search-button" />
@@ -70,10 +71,10 @@
                         <li class="menu-item-has-children ">
                         <div class="small hidden-xs"><a href="#">Categories</a></div>                  
                             <ul>  
-                                <li><a href="<?=__URL__?>/products/viewproducts/laptop">Laptop</a></li>
-                                <li><a href="<?=__URL__?>/products/viewproducts/mobile">Mobile Device</a></li>
-                                <li><a href="<?=__URL__?>/products/viewproducts/headphone">Headphone</a></li>
-                                <li><a href="<?=__URL__?>/products/viewproducts/keyboard">Keyboard</a></li>  
+                                <li><a href="<?=__URL__?>/products/viewproducts/laptop/">Laptop</a></li>
+                                <li><a href="<?=__URL__?>/products/viewproducts/mobile/">Mobile Device</a></li>
+                                <li><a href="<?=__URL__?>/products/viewproducts/headphone/">Headphone</a></li>
+                                <li><a href="<?=__URL__?>/products/viewproducts/keyboard/">Keyboard</a></li>  
                             </ul>
                         </li>
                         

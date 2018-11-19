@@ -28,4 +28,11 @@
             }
         }
     }
+
+    function saveSearchRecords($data){
+        if(isset($_SESSION['search_result'])){
+            unset($_SESSION['search_result']);
+        }
+        $_SESSION['search_result'] = $data;
+    }
 ?>
