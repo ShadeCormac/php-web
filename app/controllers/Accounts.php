@@ -27,7 +27,8 @@
                     'confirm_password' => trim($_POST['confirm-password']),
                     'username_error' => '',
                     'password_error' => '',
-                    'confirm_password_error' => ''
+                    'confirm_password_error' => '',
+                    'captcha_error' => ''
                 ];
                 //validate username
                 if(empty($data['username'])){
@@ -55,15 +56,29 @@
                     $data['confirm_password_error'] = "Passwords do not match.";
                 }
 
-                if(empty($data['username_error']) && empty($data['password_error']) && empty($data['confirm_password_error'])){
+                $responseData;
+                if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])){
+                    //your site secret key
+                    $secret = '6LcbPnsUAAAAAPJ-8EXotw7ezCLBhlF9Kka_t3Aw';
+                    //get verify response data
+                    $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
+                    $responseData = json_decode($verifyResponse);
+                }
+                    
+                if(!isset($responseData) || !$responseData->success){
+                    $data['captcha_error'] = 'You did not finish the captcha!';
+                }
+                    
+
+                if(empty($data['username_error']) && empty($data['password_error']) && empty($data['confirm_password_error']) && empty($data['captcha_error'])){
                     //success
-                    if($this->accountModel->register($data['username'], password_hash($data['password'], PASSWORD_DEFAULT)) > 0){
+                    if($this->accountModel->register($data['username'], password_hash($data['password'], PASSWORD_DEFAULT)) ){
                         //added
                         flash('register_success', 'Registered, now you can log in.');
                         redirect('accounts/login');
                     }else{
                         //something went wrong
-                        die('something went wrong..');
+                        redirect('accounts/register');
                     }
 
                 }else{
@@ -77,7 +92,8 @@
                     'confirm_password' => '',
                     'username_error' => '',
                     'password_error' => '',
-                    'confirm_password_error' => ''
+                    'confirm_password_error' => '',
+                    'captcha_error' => ''
                 ];
                 // Load view
                 $this->view('accounts/register', $data);

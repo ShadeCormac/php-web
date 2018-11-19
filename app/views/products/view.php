@@ -86,7 +86,7 @@
                                 for($index = 1; $index <= $totalPages; $index++){
                                     if($index == $data['current_page'])
                                         echo "<li><span class='page-numbers current'>$index</span> /</li>";
-                                    else echo "<li><a href=" . (!empty($data['isSearch'])? 'search/' : './') . "$index class='page-numbers'>$index</a></li>";
+                                    else echo "<li><a href=$index class='page-numbers'>$index</a></li>";
                                     
                                 }
                             ?>

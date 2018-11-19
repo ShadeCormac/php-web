@@ -21,7 +21,9 @@
                                     <div class="form-group">
                                     <p>Confirm Password</p>
                                     <input type="password" name="confirm-password" class="input-line form-control <?php echo(!empty($data['confirm_password_error'])? 'is-invalid': ''); ?>">
-                                    <span class="invalid-feedback"><?=$data['confirm_password_error']?></span>   
+                                    <span class="invalid-feedback"><?=$data['confirm_password_error']?></span>
+                                    <div name='g-recaptcha' class='form-group g-recaptcha col-xs-offset-3' data-sitekey='6LcbPnsUAAAAAIVHfGP4vtKQHjqn1Rs_hKmehOTc'></div>   
+                                    <span class="invalid-feedback"><?=$data['captcha_error']?></span>
                                 </div>         
                                 <div class="row">   
                                     <div class="col">

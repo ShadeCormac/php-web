@@ -21,6 +21,7 @@
         <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
         <link rel="stylesheet" href="<?php echo __URL__; ?>/css/bootstrap.css" type='text/css'/> 
         <!-- <link rel="stylesheet" href="<?php //echo __URL__; ?>/css/bootstrap-4.css" type='text/css'/>  -->
+        <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
 
     <body>
