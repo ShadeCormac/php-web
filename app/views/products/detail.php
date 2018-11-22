@@ -25,7 +25,7 @@
                                     <div class="product-price">PRICE : <?=number_format($data['product']->Price)?> VND</div>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="#" class="button-2">add to shopping bag</a>
+                                    <a href="#" class="button-2">Add to shopping bag</a>
                                     
                                 </div>
                             </div>
@@ -60,145 +60,64 @@
                             <li><i class="icon-517 prev" title="left arrow"></i></li>
                             <li><i class="icon-501 next" title="right arrow"></i></li>
                         </ul>
-                        <div class="site-inside"><span>We also recommend</span></div
+                        <div class="site-inside"><span>Same Brand</span></div
                     ></div> 
                     <div class="row">
-                        <div class="tesla-carousel-items">
-                            <div class="col-md-3">
-                                <div class="product">
-                                    <div class="product-cover">
-                                        <div class="product-cover-hover"><span><a href="product.html">View</a></span></div>
-                                        <img src="<?=__URL__;?>/images/photos/recommand-4.jpg" alt="product name" />
-                                    </div>    
-                                    <div class="product-details">  
-                                        <h1><a href="#">Black Dress</a></h1>
-                                        <p>Black evening dress of genuine tissue</p>
-                                        <div class="product-price">
-                                            <i class="icon-257" title="add to cart"></i>
-                                            $135
+                       
+                            <div class="tesla-carousel-items">
+                                <?php foreach($data['related_brand_products'] as $product):?>
+                                <div class="col-md-3">
+                                    <div class="product">
+                                        <div class="product-cover">
+                                            <div class="product-cover-hover"><span><a href="<?=__URL__ ?>/products/detail/<?=$product->ProductId?>">View</a></span></div>
+                                            <img src="<?=__URL__ . $product->ImageSource?>" alt="product name" />
+                                        </div>    
+                                        <div class="product-details">  
+                                            <h1><a href="<?=__URL__ ?>/products/detail/<?=$product->ProductId?>"><?=$product->ProductName?></a></h1>
+                                            <div class="product-price">
+                                                <i class="icon-257" title="add to cart"></i>
+                                                <?=number_format($product->Price)?> VND
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <?php endforeach;?>
                             </div>
-                            <div class="col-md-3">
-                                <div class="product">
-                                    <div class="product-cover">
-                                        <div class="product-cover-hover"><span><a href="product.html">View</a></span></div>
-                                        <img src="<?=__URL__;?>/images/photos/recommand-3.jpg" alt="product name" />
-                                    </div>  
-                                    <div class="product-details">    
-                                        <h1><a href="#">Black Dress</a></h1>
-                                        <p>Black evening dress of genuine tissue</p>
-                                        <div class="product-price">
-                                            <i class="icon-257" title="add to cart"></i>
-                                            $135
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="tesla-carousel" data-tesla-plugin="carousel" data-tesla-container=".tesla-carousel-items" data-tesla-item=">div" data-tesla-autoplay="false" data-tesla-rotate="false">
+                    <div class="site-title">
+                        <ul class="wrapper-arrows">
+                            <li><i class="icon-517 prev" title="left arrow"></i></li>
+                            <li><i class="icon-501 next" title="right arrow"></i></li>
+                        </ul>
+                        <div class="site-inside"><span>Same Category</span></div
+                    ></div> 
+                    <div class="row">
+                       
+                            <div class="tesla-carousel-items">
+                                <?php foreach($data['related_type_products'] as $product):?>
+                                <div class="col-md-3">
+                                    <div class="product">
+                                        <div class="product-cover">
+                                            <div class="product-cover-hover"><span><a href="<?=__URL__ ?>/products/detail/<?=$product->ProductId?>">View</a></span></div>
+                                            <img src="<?=__URL__ . $product->ImageSource?>" alt="product name" />
+                                        </div>    
+                                        <div class="product-details">  
+                                            <h1><a href="<?=__URL__ ?>/products/detail/<?=$product->ProductId?>"><?=$product->ProductName?></a></h1>
+                                            <div class="product-price">
+                                                <i class="icon-257" title="add to cart"></i>
+                                                <?=number_format($product->Price)?> VND
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <?php endforeach;?>
                             </div>
-
-                            <div class="col-md-3">
-                                <div class="product">
-                                    <div class="product-cover">
-                                        <div class="product-cover-hover"><span><a href="product.html">View</a></span></div>
-                                        <img src="<?=__URL__;?>/images/photos/recommand-2.jpg" alt="product name" />
-                                    </div>  
-                                    <div class="product-details">    
-                                        <h1><a href="#">Black Dress</a></h1>
-                                        <p>Black evening dress of genuine tissue</p>
-                                        <div class="product-price">
-                                            <i class="icon-257" title="add to cart"></i>
-                                            $135
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="product">
-                                    <div class="product-cover">
-                                        <div class="product-cover-hover"><span><a href="product.html">View</a></span></div>
-                                        <img src="<?=__URL__;?>/images/photos/recommand-1.jpg" alt="product name" />
-                                    </div> 
-                                    <div class="product-details">     
-                                        <h1><a href="#">Black Dress</a></h1>
-                                        <p>Black evening dress of genuine tissue</p>
-                                        <div class="product-price">
-                                            <i class="icon-257" title="add to cart"></i>
-                                            $135
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="product">
-                                    <div class="product-cover">
-                                        <div class="product-cover-hover"><span><a href="product.html">View</a></span></div>
-                                        <img src="<?=__URL__;?>/images/photos/recommand-4.jpg" alt="product name" />
-                                    </div>  
-                                    <div class="product-details">    
-                                        <h1><a href="#">Red Dress</a></h1>
-                                        <p>Red evening dress for tonight</p>
-                                        <div class="product-price">
-                                            <i class="icon-257" title="add to cart"></i>
-                                            $335
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="product">
-                                    <div class="product-cover">
-                                        <div class="product-cover-hover"><span><a href="product.html">View</a></span></div>
-                                        <img src="<?=__URL__;?>/images/photos/recommand-3.jpg" alt="product name" />
-                                    </div>   
-                                    <div class="product-details">   
-                                        <h1><a href="#">Burgunday Dress</a></h1>
-                                        <p>Burgunday velvet</p>
-                                        <div class="product-price">
-                                            <i class="icon-257" title="add to cart"></i>
-                                            $85
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="product">
-                                    <div class="product-cover">
-                                        <div class="product-cover-hover"><span><a href="product.html">View</a></span></div>
-                                        <img src="<?=__URL__;?>/images/photos/recommand-2.jpg" alt="product name" />
-                                    </div>  
-                                    <div class="product-details">    
-                                        <h1><a href="#">Jacquard Dress</a></h1>
-                                        <p>Grey jacquard dress</p>
-                                        <div class="product-price">
-                                            <i class="icon-257" title="add to cart"></i>
-                                            $115
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="product">
-                                    <div class="product-cover">
-                                        <div class="product-cover-hover"><span><a href="product.html">View</a></span></div>
-                                        <img src="<?=__URL__;?>/images/photos/recommand-1.jpg" alt="product name" />
-                                    </div>   
-                                    <div class="product-details">   
-                                        <h1><a href="#">Jacquard Dress</a></h1>
-                                        <p>Grey jacquard dress</p>
-                                        <div class="product-price">
-                                            <i class="icon-257" title="add to cart"></i>
-                                            $115
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

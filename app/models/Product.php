@@ -5,19 +5,13 @@
             $this->db = new Database();
         }
 
-        public function count($type, $searchString){
+        public function count($type, $searchString=''){
             $data = $this->db->query('SELECT * 
                                     FROM product as p join category as c on p.CategoryId = c.CategoryId
                                     where ' . $type . ' like :searchString
                                     ');
             $this->db->bind(':searchString', '%' . $searchString. '%');
             $this->db->resultSet();
-            return $this->db->rowCount();
-        }
-
-        public function countAll(){
-            $this->db->query('SELECT * from product');
-            $this->db->execute();
             return $this->db->rowCount();
         }
 
@@ -30,17 +24,6 @@
             $product = $this->db->getSingle();
             return $product;
         }
-
-        // public function getProducts($category =''){
-        //     $this->db->query('SELECT * FROM product as p
-        //                     JOIN category as c on p.CategoryId = c.CategoryId
-        //                     WHERE c.CategoryName like :category
-        //                     ');
-        //     $this->db->bind(':category', '%'. $category . '%');
-           
-        //     $data = $this->db->resultSet();
-        //     return $data;
-        // }
 
         public function getProductsByPage($category, $pageNum){
             $productsPerPage = 9;
@@ -60,17 +43,6 @@
             return $data;
         }
 
-        public function getProductsByBrand($category, $brand){
-            $data = $this->getProducts($category);
-            $data = array_filter($data, function($item){
-                if(isset($item->Producer)){
-                    if($item->Producer == $brand){
-                        return true;
-                    }
-                }
-                return false;
-            });
-        }
 
         public function getProducts($type, $searchString, $page){
             $this->db->query('SELECT * 
@@ -90,6 +62,25 @@
                 return $data;
             }
                 
+        }
+        
+        public function getRelatedTypeProducts($categoryName){
+            $this->db->query('SELECT * FROM product as p JOIN category as c
+                            ON p.CategoryId = c.CategoryId
+                            WHERE c.CategoryName = :categoryName
+                            LIMIT 0, 5
+                            ');
+            $this->db->bind(':categoryName', $categoryName);
+            return $this->db->resultSet();
+        }
+
+        public function getRelatedBrandProducts($brandName){
+            $this->db->query('SELECT * FROM product as p 
+                            WHERE p.Producer like :brandName
+                            LIMIT 0, 5'
+                            );
+            $this->db->bind(':brandName', $brandName);
+            return $this->db->resultSet();
         }
 
         public function Top10($columnName){

@@ -71,10 +71,10 @@
                         <li class="menu-item-has-children ">
                         <div class="small hidden-xs"><a href="#">Categories</a></div>                  
                             <ul>  
-                                <li><a href="<?=__URL__?>/products/viewproducts/laptop/">Laptop</a></li>
-                                <li><a href="<?=__URL__?>/products/viewproducts/mobile/">Mobile Device</a></li>
-                                <li><a href="<?=__URL__?>/products/viewproducts/headphone/">Headphone</a></li>
-                                <li><a href="<?=__URL__?>/products/viewproducts/keyboard/">Keyboard</a></li>  
+                                <li><a href="<?=__URL__?>/products/views/laptop/">Laptop</a></li>
+                                <li><a href="<?=__URL__?>/products/views/mobile/">Mobile Device</a></li>
+                                <li><a href="<?=__URL__?>/products/views/headphone/">Headphone</a></li>
+                                <li><a href="<?=__URL__?>/products/views/keyboard/">Keyboard</a></li>  
                             </ul>
                         </li>
                         
