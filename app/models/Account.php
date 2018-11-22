@@ -5,22 +5,23 @@
             $this->db = new Database;
         }
 
-        
-
-        public function getUserDetail($id){
-            $this->db->query('SELECT * FROM account WHERE AccountId = :id');
-            $this->db->bind(':id', $id);
-            $data =  $this->db->getSingle();
-            
-            return $data;
-            
+        public function checkPassword($username, $password){
+            $this->db->query('SELECT * FROM account WHERE UserName = :username');
+            $this->db->bind(':username', $username);
+            $user =  $this->db->getSingle();
+            if(password_verify($password, $user->Pass)){
+                return true;
+            }else return false;
         }
 
-        public function getUserPassword($username){
-            $this->db->query('SELECT * FROM account Where UserName = :username');
+        
+
+        public function getUserDetail($username){
+            $this->db->query('SELECT * FROM account WHERE UserName = :username');
             $this->db->bind(':username', $username);
-            $data = $this->db->getSingle();
-            return $data->Pass;
+            $user =  $this->db->getSingle();
+            return $user;
+            
         }
 
         public function findAccountByUsername($username){

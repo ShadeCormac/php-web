@@ -5,7 +5,7 @@
         }
 
         public function index(){
-            if(!empty($_SESSION['isLoggedIn'])){
+            if(!isLoggedIn()){
                 //already logged in, redirect to details
                 redirect('accounts/detail');
             }else{
@@ -125,24 +125,21 @@
                         
                     }
                 }
-                //NEED FIX
-
+                
                 if(empty($data['password'])){
                     $data['password_error'] = 'Password must be filled.';
                 }else {
                     //hit database for password
-                    $hashPass = $this->accountModel->getUserPassword($data['username']);
-                    if(($hashPass !== NULL) && !password_verify($data['password'], $hashPass)){
+                    if(!$this->accountModel->checkPassword($data['username'], $data['password'])){
                         $data['password_error'] = "Password does not match.";
                     }
                 }
 
                 if(empty($data['username_error']) && empty($data['password_error'])){
-                   $_SESSION['isLoggedIn'] = true;
+                   
                    //getuserid
                    $user = $this->accountModel->getUserDetail($data['username']);
-                   $_SESSION['userid'] = $user->AccountId;
-                   $_SESSION['usertype'] = $user->Type;
+                   createUserSession($user);
                    //redirect to load controller if needed
                    redirect('pages/index');
                 }else{
@@ -163,8 +160,8 @@
         }
 
         public function detail(){
-            if(!empty($_SESSION['isLoggedIn'])) {              
-                    $row = $this->accountModel->getUserDetail($_SESSION['userid']);
+            if(isLoggedIn()) {              
+                    $row = $this->accountModel->getUserDetail($_SESSION['username']);
                     $data = [
                         'detail' => $row
                     ];

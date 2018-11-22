@@ -29,10 +29,15 @@
         }
     }
 
-    function saveSearchRecords($data){
-        if(isset($_SESSION['search_result'])){
-            unset($_SESSION['search_result']);
-        }
-        $_SESSION['search_result'] = $data;
+    function isLoggedIn(){
+        return isset($_SESSION['isLoggedIn']) ? true : false;
+    }
+
+
+    function createUserSession($user){
+        $_SESSION['isLoggedIn'] = true;
+        $_SESSION['userid'] = $user->AccountId;
+        $_SESSION['usertype'] = $user->Type;
+        $_SESSION['username'] = $user->UserName;
     }
 ?>

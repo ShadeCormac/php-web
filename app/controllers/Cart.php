@@ -2,6 +2,9 @@
     class Cart extends Controller{
         public function index(){
             //view items by loading products from SESSION
+            if(empty($_SESSION['isLoggedIn'])){
+                redirect('accounts/login');
+            }
             $this->view('cart/index');
         }
         public function checkout(){

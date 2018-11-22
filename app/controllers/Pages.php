@@ -7,8 +7,8 @@
         //always has to have index function
         public function index(){
             $data = [];
-            $data['most_view_products'] = $this->productModel->Top10('ViewCount');
-            $data['newest_products'] = $this->productModel->Top10('Create_At');
+            $data['highest_view_products'] = $this->productModel->Top10('ViewCount');
+            $data['newest_products'] = $this->productModel->Top10('CreatedAt');
             $data['highest_sell_products'] = $this->productModel->Top10('SellCount'); 
             $this->view('pages/index', $data);
         }

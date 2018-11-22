@@ -42,30 +42,7 @@
             }
             
         }
-
-        // public function search($pageNum = 1){
-        //     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        //         $data = [];
-        //         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        //         saveSearchRecords($_POST);            
-        //         $result = $this->productModel->getProducts($_POST['search-method'], $_POST['search'], $pageNum);
-        //         $data['products'] = $result;
-        //         $data['products_count'] = $this->productModel->count($_POST['search-method'], $_POST['search']);
-                
-        //     }else{
-        //         $data = [];
-        //         $_POST = $_SESSION['search_result'];
-        //         $result = $this->productModel->getProducts($_POST['search-method'], $_POST['search'], $pageNum);
-        //         $data['products'] = $result;
-        //         $data['products_count'] = $this->productModel->count($_POST['search-method'], $_POST['search']);
-        //         //$data['current_page'] = $pageNum;
-                
-        //         //$this->view('products/view', $data);
-        //     }
-        //     $data['current_page'] = $pageNum;
-        //     $this->view('products/view', $data);
-        // }
-
+        
         
     }
 ?>
