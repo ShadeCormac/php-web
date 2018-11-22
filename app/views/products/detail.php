@@ -14,9 +14,9 @@
                             
                             <div class="clear"></div>
                             <div class="quantity">
-                                <input type="button" value="-" class="minus">
-                                <input type="number" step="1" min="1" name="quantity" value="1" title="Qty" class="input-text qty text">
-                                <input type="button" value="+" class="plus">
+                                <input type="button" value="-" class="minus" onclick=decreaseQuantity()>
+                                <input type="number" step="1" min="1" name="quantity" id='quantity-id' value="1" title="Qty" class="input-text qty text">
+                                <input type="button" value="+" class="plus" onclick=addQuantity()>
                                 <span><?=$data['product']->SellCount?> sold / <?=$data['product']->Quantity?> available</span>
                             </div>
                             <hr/>

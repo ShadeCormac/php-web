@@ -69,7 +69,7 @@
                                         END FOOTER
         ======================================================================= -->
 
-
+        <script src="<?php echo __URL__; ?>/js/main.js" type="text/javascript"></script>
         <script src="<?php echo __URL__; ?>/js/modernizr.custom.63321.js" type="text/javascript"></script>
         <script src="<?php echo __URL__; ?>/js/jquery-1.10.0.min.js" type="text/javascript"></script>
         <script src="<?php echo __URL__; ?>/js/jquery-ui.min.js" type="text/javascript"></script>

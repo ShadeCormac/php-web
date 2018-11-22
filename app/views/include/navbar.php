@@ -29,7 +29,7 @@
                 </div>
                 <div class="menu">
                     <div class="search-cart">
-                        <form class="search form-inline" action='<?=__URL__?>/products/search/' method='POST'>
+                        <form class="search form-inline" action='<?=__URL__?>/products/search' method='GET'>
                             
                             <select name='search-method' class='form-control text-center' style="width:auto; margin-top:3px;; height:36px">
                               <option  value="ProductName" selected >Product name</option>

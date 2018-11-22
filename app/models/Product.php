@@ -31,19 +31,19 @@
             return $product;
         }
 
-        public function getProducts($category =''){
-            $this->db->query('SELECT * FROM product as p
-                            JOIN category as c on p.CategoryId = c.CategoryId
-                            WHERE c.CategoryName like :category
-                            ');
-            $this->db->bind(':category', '%'. $category . '%');
+        // public function getProducts($category =''){
+        //     $this->db->query('SELECT * FROM product as p
+        //                     JOIN category as c on p.CategoryId = c.CategoryId
+        //                     WHERE c.CategoryName like :category
+        //                     ');
+        //     $this->db->bind(':category', '%'. $category . '%');
            
-            $data = $this->db->resultSet();
-            return $data;
-        }
+        //     $data = $this->db->resultSet();
+        //     return $data;
+        // }
 
         public function getProductsByPage($category, $pageNum){
-            $productsPerPage = 1;
+            $productsPerPage = 9;
             $this->db->query('SELECT * FROM product as p
             JOIN category as c on p.CategoryId = c.CategoryId
             WHERE c.CategoryName like :category
@@ -51,7 +51,7 @@
             ');
             $this->db->bind(':category', $category);
     
-            $rowNum = (($pageNum * $productsPerPage) - 1);
+            $rowNum = (($pageNum -1) * $productsPerPage);
             $this->db->bind(':rowNum', $rowNum);
 
             $this->db->bind(':productsPerPage', $productsPerPage);
@@ -72,24 +72,32 @@
             });
         }
 
-        public function getProducts1($type, $searchString, $page){
-            $data = $this->db->query('SELECT * 
+        public function getProducts($type, $searchString, $page){
+            $this->db->query('SELECT * 
                                     FROM product as p join category as c on p.CategoryId = c.CategoryId
                                     where ' . $type . ' like :searchString
                                     LIMIT :rowNum, :productsPerPage
                                     ');
-            $productsPerPage = 1;
+            $productsPerPage = 9;
             //$this->db->bind(':typeSearch', $type);
             $this->db->bind(':searchString', '%'.$searchString.'%');
-            $rowNum = (($page * $productsPerPage) - 1);
+            $rowNum = ((($page - 1) * $productsPerPage));
             $this->db->bind(':rowNum', $rowNum);
                         
             $this->db->bind(':productsPerPage', $productsPerPage);
-            $data['products'] = $this->db->resultSet();
+            $data = $this->db->resultSet();
             if($this->db->rowCount() > 0){
                 return $data;
             }
                 
+        }
+
+        public function Top10($columnName){
+            $this->db->query('SELECT * from product 
+                            ORDER BY '.$columnName.' DESC
+                            LIMIT 0, 10');
+            //$this->db->bind(':columnName', $columnName);
+            return $this->db->resultSet();
         }
     }
 ?>
