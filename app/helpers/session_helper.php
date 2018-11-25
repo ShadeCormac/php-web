@@ -40,4 +40,6 @@
         $_SESSION['usertype'] = $user->Type;
         $_SESSION['username'] = $user->UserName;
     }
+
+    
 ?>

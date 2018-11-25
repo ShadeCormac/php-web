@@ -8,27 +8,34 @@
 
                             <img src="<?=__URL__ . $data['product']->ImageSource?>" alt="<?=$data['product']->ProductName?>">
                         </div>
+                        <form action='<?=__URL__?>/cart/add' method='POST'>
                         <div class="col-md-6">
                             <h2><?=$data['product']->ProductName?></h2>
                             
                             
                             <div class="clear"></div>
+                            
                             <div class="quantity">
                                 <input type="button" value="-" class="minus" onclick=decreaseQuantity()>
-                                <input type="number" step="1" min="1" name="quantity" id='quantity-id' value="1" title="Qty" class="input-text qty text">
+                                <input type="number" step="1" min="1" max="<?=$data['product']->Quantity?>" name="quantity" id='quantity-id' value="1" title="Qty" class="input-text qty text">
                                 <input type="button" value="+" class="plus" onclick=addQuantity()>
                                 <span><?=$data['product']->SellCount?> sold / <?=$data['product']->Quantity?> available</span>
                             </div>
                             <hr/>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="product-price">PRICE : <?=number_format($data['product']->Price)?> VND</div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="product-price">PRICE : <?=number_format($data['product']->Price)?> VND</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        
+                                            <input type="hidden" name ='product-id' value='<?=$data['product']->ProductId?>'>
+                                            <input type="hidden" name ='product-name' value='<?=$data['product']->ProductName?>'>
+                                            <input type="hidden" name ='product-image' value='<?=$data['product']->ImageSource?>'>
+                                            <input type="hidden" name ='product-price' value='<?=$data['product']->Price?>'>
+                                            <input type='submit' value="Add to shopping bag"  name='btn-add-to-cart' class="button-2">
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <a href="#" class="button-2">Add to shopping bag</a>
-                                    
-                                </div>
-                            </div>
+                            </form>
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
                                 

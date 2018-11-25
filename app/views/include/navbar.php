@@ -14,14 +14,16 @@
                         <ul class="header-middle-account">
                             
                             <?= !empty($_SESSION['isLoggedIn'])?
-                            '<li><a href="'. __URL__ . '/accounts/detail"><i class="icon-330" title="My account"></i> My account</a></li>
+                            '
+                            <li><a href="'. __URL__ . '/accounts/detail"><i class="icon-330" title="My account"></i> My account</a></li>
                             <li><a href="'. __URL__ . '/accounts/logout" ><i class="icon-352" title="Logout"></i>Log out</a></li>
                             ' 
-                            :'<li><a href="'. __URL__ . '/accounts/login"><i class="icon-352" title="Login"></i> Login</a></li>
+                            :'
                             <li><a href="'. __URL__ . '/accounts/register"><i class="icon-351" title="Register"></i>Register</a></li> 
+                            <li><a href="'. __URL__ . '/accounts/login"><i class="icon-352" title="Login"></i> Login</a></li>
                             ' ;?>   
                                
-                            <li><a href="<?=__URL__?>/cart/checkout"><i class="icon-259" title="Checkout"></i> Checkout</a></li>
+                            <li><a href="<?=__URL__?>/cart/"><i class="icon-259" title="Cart"></i> Cart</a></li>
                         </ul>   
                     </div>
                     </div>
@@ -43,23 +45,20 @@
                             <a href="<?=__URL__ ;?>/cart"><i class="icon-19" title="Cart"></i></a>
 
                             <div class="inside-cart">
-                                <p><?='SELECTEDPRODUCTS_COUNT';?> products in the shopping bag</p>
-                                <ul>
-                                    <li>
-                                        <div class="inside-cart-image"><img src="<?=__URL__ ?>/images/photos/image-9.jpg" alt="product name" /></div>
-                                        <button>x</button>
-                                        <a href="product.html">Stripe boucle</a>
-                                        <p>Unit price 50$</p>
-                                        <p>Q-ty: 1</p>
-                                    </li>
-                                    <li>
-                                        <div class="inside-cart-image"><img src="<?=__URL__ ?>/images/photos/image-8.jpg" alt="product name" /></div>
-                                        <button>x</button>
-                                        <a href="product.html">Stripe boucle</a>
-                                        <p>Unit price 75$</p>
-                                        <p>Q-ty: 2</p>
-                                    </li>
-                                </ul>
+                                <p><?=countCartItems();?> products in the shopping bag</p>
+                                <?php if(!empty($_SESSION['cart_items'])):?>
+                                    <ul>
+                                            <?php foreach($_SESSION['cart_items'] as $product):?>
+                                                <li>
+                                                    <div class="inside-cart-image"><img src="<?=__URL__ ?><?=$product['product_image']?>" alt="product name" /></div>
+                                                    <button>x</button>
+                                                    <a href="product.html"><?=$product['product_name']?></a>
+                                                    <p>Unit price <?=number_format($product['product_price'])?> VND</p>
+                                                    <p>Q-ty: <?=$product['quantity']?></p>
+                                                </li>
+                                            <?php endforeach;?>  
+                                    </ul>
+                                <?php endif;?>
                             </div>
                         </div>
                         <div class="clear"></div>

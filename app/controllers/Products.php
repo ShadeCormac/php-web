@@ -12,6 +12,15 @@
             $data['related_type_products'] = $this->productModel->getRelatedTypeProducts($data['product']->CategoryName);
             $this->view('products/detail', $data);
         }
+
+        public function brands($brandName, $pageNum = 1){
+            $data = [];
+            $data['brand'] = $brandName;
+            $data['products'] = $this->productModel->getProductsByBrand($brandName, $pageNum);
+            $data['products_count'] = $this->productModel->count('Producer', $brandName);
+            $data['current_page'] = $pageNum;
+            $this->view('products/view', $data);
+        }
         public function views($productType, $pageNum = 1){
             $data = [];
             $data['type'] = $productType;   

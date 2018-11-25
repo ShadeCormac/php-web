@@ -13,6 +13,7 @@
             $this->view('pages/index', $data);
         }
         public function about(){
+            print_r($_SESSION);
             $data=[];
             $this->view('pages/about', $data);
             

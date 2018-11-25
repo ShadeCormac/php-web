@@ -25,6 +25,24 @@
             return $product;
         }
 
+        public function getProductsByBrand($brand, $pageNum){
+            $productsPerPage = 9;
+            $this->db->query('SELECT * FROM product as p
+            JOIN category as c on p.CategoryId = c.CategoryId
+            WHERE p.Producer like :producer
+            LIMIT :rowNum , :productsPerPage
+            ');
+            $this->db->bind(':producer', $brand);
+    
+            $rowNum = (($pageNum -1) * $productsPerPage);
+            $this->db->bind(':rowNum', $rowNum);
+
+            $this->db->bind(':productsPerPage', $productsPerPage);
+
+            $data = $this->db->reSultSet();
+            return $data;
+        }
+
         public function getProductsByPage($category, $pageNum){
             $productsPerPage = 9;
             $this->db->query('SELECT * FROM product as p
@@ -53,7 +71,7 @@
             $productsPerPage = 9;
             //$this->db->bind(':typeSearch', $type);
             $this->db->bind(':searchString', '%'.$searchString.'%');
-            $rowNum = ((($page - 1) * $productsPerPage));
+            $rowNum = (($page - 1) * $productsPerPage);
             $this->db->bind(':rowNum', $rowNum);
                         
             $this->db->bind(':productsPerPage', $productsPerPage);

@@ -148,7 +148,7 @@
                                         <div class="product">
                                             <div class="product-cover">
                                                 <span class="product-action">
-                                                    <span class="product-new">New</span>
+                                                    <span class="product-new">Hot</span>
                                                 </span>
                                                 <div class="product-cover-hover"><span><a href="<?=__URL__?>/products/detail/<?=$product->ProductId?>">View</a></span></div>
                                                 <img src="<?=__URL__ . $product->ImageSource?>" alt="<?=$product->ProductName?>" style="width:260px;height:145px" />
@@ -186,7 +186,7 @@
                                         <div class="product">
                                             <div class="product-cover">
                                                 <span class="product-action">
-                                                    <span class="product-new">New</span>
+                                                    <span class="product-new">Hot</span>
                                                 </span>
                                                 <div class="product-cover-hover"><span><a href="<?=__URL__?>/products/detail/<?=$product->ProductId?>">View</a></span></div>
                                                 <img src="<?=__URL__ . $product->ImageSource?>" alt="<?=$product->ProductName?>" style="width:260px;height:145px" />
@@ -206,5 +206,5 @@
                     </div>
                 </div>
             </div>
-
+</div>
 <?php require __ROOT__.'/views/include/footer.php'; ?>

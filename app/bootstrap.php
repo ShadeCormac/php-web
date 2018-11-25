@@ -5,6 +5,8 @@
     require_once "config/config.php";
     //Load Url_helper
     require_once "helpers/url_helper.php";
+    
+    require_once "helpers/cart_helper.php";
     //Load lib's files
     // require_once "lib/Controller.php";
     // require_once "lib/Core.php";
