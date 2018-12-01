@@ -38,6 +38,10 @@
                 if(isset($_GET['search-method']) && isset($_GET['search'])){
                     $pageNum = !empty($_GET['page'])? (int)$_GET['page'] : 1;
                 }
+                if(isset($_GET['sort'])){
+                    //need to be implimented
+                }
+                
                 //echo $pageNum;
                 //sanitize get array
                 $_GET = filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);

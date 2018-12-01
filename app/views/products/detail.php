@@ -16,9 +16,9 @@
                             <div class="clear"></div>
                             
                             <div class="quantity">
-                                <input type="button" value="-" class="minus" onclick=decreaseQuantity()>
+                                <input type="button" value="-" class="minus" onclick=decreaseQtt()>
                                 <input type="number" step="1" min="1" max="<?=$data['product']->Quantity?>" name="quantity" id='quantity-id' value="1" title="Qty" class="input-text qty text">
-                                <input type="button" value="+" class="plus" onclick=addQuantity()>
+                                <input type="button" value="+" class="plus" onclick=addQtt()>
                                 <span><?=$data['product']->SellCount?> sold / <?=$data['product']->Quantity?> available</span>
                             </div>
                             <hr/>
@@ -82,7 +82,7 @@
                                         <div class="product-details">  
                                             <h1><a href="<?=__URL__ ?>/products/detail/<?=$product->ProductId?>"><?=$product->ProductName?></a></h1>
                                             <div class="product-price">
-                                                <i class="icon-257" title="add to cart"></i>
+                                                <i onclick=addtoCart(<?=$product->ProductId?>) class="icon-257" title="add to cart"></i>
                                                 <?=number_format($product->Price)?> VND
                                             </div>
                                         </div>
@@ -116,7 +116,7 @@
                                         <div class="product-details">  
                                             <h1><a href="<?=__URL__ ?>/products/detail/<?=$product->ProductId?>"><?=$product->ProductName?></a></h1>
                                             <div class="product-price">
-                                                <i class="icon-257" title="add to cart"></i>
+                                                <i onclick=addtoCart(<?=$product->ProductId?>) class="icon-257" title="add to cart"></i>
                                                 <?=number_format($product->Price)?> VND
                                             </div>
                                         </div>

@@ -6,10 +6,10 @@
                 <div class="row">
                     <div class="col-md-3 col-xs-6">
                         <ul class="socials">
-                            <li><a href="#"><img src="<?=__URL__;?>/images/elements/socials/facebook.png" alt="facebook"/>Facebook</a></li>
-                            <li><a href="#"><img src="<?=__URL__;?>/images/elements/socials/twitter.png" alt="twitter"/>Twitter</a></li>
-                            <li><a href="#"><img src="<?=__URL__;?>/images/elements/socials/youtube.png" alt="youtube"/>Youtube</a></li>
-                            <li><a href="#"><img src="<?=__URL__;?>/images/elements/socials/googleplus.png" alt="google"/>Google+</a></li>
+                            <li><a href="#"><img class="img-h-auto" src="<?=__URL__;?>/images/elements/socials/facebook.png" alt="facebook"/>Facebook</a></li>
+                            <li><a href="#"><img class="img-h-auto" src="<?=__URL__;?>/images/elements/socials/twitter.png" alt="twitter"/>Twitter</a></li>
+                            <li><a href="#"><img class="img-h-auto" src="<?=__URL__;?>/images/elements/socials/youtube.png" alt="youtube"/>Youtube</a></li>
+                            <li><a href="#"><img class="img-h-auto" src="<?=__URL__;?>/images/elements/socials/googleplus.png" alt="google"/>Google+</a></li>
                         </ul>
                     </div>
                     <div class="col-md-3 col-xs-6">
@@ -58,7 +58,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="text-right">
-                                <img src="<?=__URL__;?>/images/elements/payment.png" alt="payment systems" />
+                                <img class="img-h-auto" src="<?=__URL__;?>/images/elements/payment.png" alt="payment systems" />
                             </div>
                         </div>
                     </div>

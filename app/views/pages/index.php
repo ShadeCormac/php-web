@@ -5,7 +5,7 @@
                  START THE SLIDER -->
             <div class="the-slider slider" data-tesla-plugin="slider" data-tesla-item=".slide" data-tesla-next=".slide-right" data-tesla-prev=".slide-left" data-tesla-container=".slide-wrapper">
                 <ul class="slide-wrapper">
-                    <li class="slide"><img src="<?=__URL__?>/images/photos/banner2.jpg" alt="banner"></li>
+                    <li class="slide"><img style="height:auto" src="<?=__URL__?>/images/photos/banner2.jpg" alt="banner"></li>
                 </ul>
                
             </div>
@@ -37,7 +37,7 @@
                                             <div class="product-details text-center">  
                                                 <h1 class='my-5'><a href="<?=__URL__?>/products/detail/<?=$product->ProductId?>"><?=$product->ProductName?></a></h1>
                                                 <div class="product-price">
-                                                    <i class="icon-257" title="add to cart"></i>
+                                                    <i onclick=addtoCart(<?=$product->ProductId?>) class="icon-257" title="add to cart"></i>
                                                     <?=number_format($product->Price)?> VND
                                                 </div>
                                             </div>
@@ -156,7 +156,7 @@
                                             <div class="product-details text-center">  
                                                 <h1 class='my-5'><a href="<?=__URL__?>/products/detail/<?=$product->ProductId?>"><?=$product->ProductName?></a></h1>
                                                 <div class="product-price">
-                                                    <i class="icon-257" title="add to cart"></i>
+                                                    <i onclick=addtoCart(<?=$product->ProductId?>) class="icon-257" title="add to cart"></i>
                                                     <?=number_format($product->Price)?> VND
                                                 </div>
                                             </div>
@@ -194,7 +194,7 @@
                                             <div class="product-details text-center">  
                                                 <h1 class='my-5'><a href="<?=__URL__?>/products/detail/<?=$product->ProductId?>"><?=$product->ProductName?></a></h1>
                                                 <div class="product-price">
-                                                    <i class="icon-257" title="add to cart"></i>
+                                                    <i onclick=addtoCart(<?=$product->ProductId?>) class="icon-257" title="add to cart"></i>
                                                     <?=number_format($product->Price)?> VND
                                                 </div>
                                             </div>

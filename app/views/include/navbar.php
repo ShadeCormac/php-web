@@ -6,7 +6,7 @@
                     <div class="col-md-4">
                         <div class="logo">
                             <a href="<?=__URL__ ;?>">
-                                <img src="<?=__URL__ ?>/images/elements/logo.png" alt="site logo" />
+                                <img style="height:auto" src="<?=__URL__ ?>/images/elements/logo.png" alt="site logo" />
                             </a>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                                                 <li>
                                                     <div class="inside-cart-image"><img src="<?=__URL__ ?><?=$product['product_image']?>" alt="product name" /></div>
                                                     <button>x</button>
-                                                    <a href="product.html"><?=$product['product_name']?></a>
+                                                    <a href="<?=__URL__?>/products/detail/<?=$product['product_id']?>"><?=$product['product_name']?></a>
                                                     <p>Unit price <?=number_format($product['product_price'])?> VND</p>
                                                     <p>Q-ty: <?=$product['quantity']?></p>
                                                 </li>
