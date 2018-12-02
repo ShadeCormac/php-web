@@ -39,6 +39,7 @@
                                     //process order
                                     //step 1: make new order(order_product)
                                     $this->orderModel = $this->model('Order');
+                                    $this->productModel = $this->model('Product');
                                     $orderId = $this->orderModel->createNewOrder($_SESSION['userid'], getTotalPrice());
                                     //step 2: for each product, fill in order_detail
                                     foreach($_SESSION['cart_items'] as $key => $product){
@@ -47,6 +48,7 @@
                                             'quantity' => $product['quantity']
                                         ];
                                         $this->orderModel->createOrderDetail($orderId, $detail);
+                                        $this->productModel->UpdateQuantity($product['product_id'], $product['quantity']);
                                     }                           
                                     //step 3: unset cart_items session
                                     unset($_SESSION['cart_items']);
@@ -70,6 +72,7 @@
                         
                         //step 1: make new order(order_product)
                         $this->orderModel = $this->model('Order');
+                        $this->productModel = $this->model('Product');
                         $orderId = $this->orderModel->createNewOrder($_SESSION['userid'], getTotalPrice());
                         //step 2: for each product, fill in order_detail
                         foreach($_SESSION['cart_items'] as $key => $product){
@@ -78,6 +81,7 @@
                                 'quantity' => $product['quantity']
                             ];
                             $this->orderModel->createOrderDetail($orderId, $detail);
+                            $this->productModel->UpdateQuantity($product['product_id'], $product['quantity']);
                         }                           
                         //step 3: unset cart_items session
                         unset($_SESSION['cart_items']);
@@ -89,7 +93,9 @@
                 //init checkout page
                 //getting user info
                 $this->accountModel = $this->model('Account');
+                
                 $accountInfo = $this->accountModel->getUserDetail($_SESSION['username']);
+                
                 $data['account'] = $accountInfo;
                 $data['cart_items'] = $_SESSION['cart_items'];
                 $data['total'] = getTotalPrice();
@@ -119,21 +125,21 @@
                     }
                 }
                 else {
-                $productDetail = $this->productModel->getProduct($_POST['product-id']);
-                $quantity = getCurrentQuantity($_POST['product-id']);
-                $max_quantity = $productDetail->Quantity;
-                if($quantity + $_POST['quantity'] <= $max_quantity){
-                //need to check stock quantity before adding
-                    $product = [
-                            'product_id' => $_POST['product-id'],
-                            'product_name' => $_POST['product-name'],
-                            'product_image' => $_POST['product-image'],
-                            'product_price' => $_POST['product-price'],
-                    ];
-                }else {
-                    redirect('pages/index');
-                    exit();
-                }
+                    $productDetail = $this->productModel->getProduct($_POST['product-id']);
+                    $quantity = getCurrentQuantity($_POST['product-id']);
+                    $max_quantity = $productDetail->Quantity;
+                    if($quantity + $_POST['quantity'] <= $max_quantity){
+                    //need to check stock quantity before adding
+                        $product = [
+                                'product_id' => $_POST['product-id'],
+                                'product_name' => $_POST['product-name'],
+                                'product_image' => $_POST['product-image'],
+                                'product_price' => $_POST['product-price'],
+                        ];
+                    }else {
+                        redirect('pages/index');
+                        exit();
+                    }
                 }
                addToCart($product, $_POST['quantity'] + $quantity);
             }

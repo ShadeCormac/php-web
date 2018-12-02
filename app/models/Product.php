@@ -14,6 +14,17 @@
             return $product->Quantity;
         }
 
+        public function updateQuantity($productId, $quantity){
+            $this->db->query('UPDATE product
+                            SET Quantity = :quantity
+                            WHERE ProductId = :productId
+                            ');
+            $this->db->bind(':quantity', $quantity);
+            $this->db->bind(':productId', $productId);
+            $this->db->execute();
+            return $this->db->rowCount();
+        }
+
         public function count($type, $searchString=''){
             $data = $this->db->query('SELECT * 
                                     FROM product as p join category as c on p.CategoryId = c.CategoryId
