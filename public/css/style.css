@@ -697,8 +697,8 @@ h4 {
 	border: 0; 
 }
 .header .search-cart .cart-all .inside-cart ul li .inside-cart-image {
-	width: 60px;
-	margin-left: -80px;
+	width: 80px;
+	margin-left: -100px;
 	float: left;
 }
 .header .header-top-info {

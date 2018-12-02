@@ -20,6 +20,12 @@
         return (!empty($_SESSION['cart_items']))?count($_SESSION['cart_items']): 0;
     }
 
+    function getCurrentQuantity($productId){
+        if(isset($_SESSION['cart_items'][$productId])){
+            return $_SESSION['cart_items'][$productId]['quantity'];
+        }else return 0; 
+    }
+
     function getTotalPrice(){
         if(!empty($_SESSION['cart_items'])){
             $total = 0;
