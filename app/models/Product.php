@@ -5,6 +5,15 @@
             $this->db = new Database();
         }
 
+        public function getQuantity($productId){
+            $this->db->query('SELECT * FROM product
+                                WHERE ProductId = :productId
+                            ');
+            $this->db->bind(":productId", $productId);
+            $product = $this->db->getSingle();
+            return $product->Quantity;
+        }
+
         public function count($type, $searchString=''){
             $data = $this->db->query('SELECT * 
                                     FROM product as p join category as c on p.CategoryId = c.CategoryId

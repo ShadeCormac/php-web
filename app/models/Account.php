@@ -14,7 +14,18 @@
             }else return false;
         }
 
-        
+        public function UpdateShippingDetail($username, $detail){
+            $this->db->query('
+                            UPDATE account
+                            SET Address = :address, Phone = :phone
+                            WHERE UserName = :username
+                            ');
+            $this->db->bind(':address', $detail['Address']);
+            $this->db->bind(':phone', $detail['Phone']);
+            $this->db->bind(':username', $username);
+            $this->db->execute();
+            return $this->db->rowCount();
+        }
 
         public function getUserDetail($username){
             $this->db->query('SELECT * FROM account WHERE UserName = :username');

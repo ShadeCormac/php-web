@@ -15,8 +15,6 @@ function addtoCart(id){
     post('http://localhost:8080/php-web/cart/add', {product_id : id, quantity: 1});
 }
 
-
-
 function decreaseQtt(){
     let quantity = document.getElementById('quantity-id');
     //console.log(quantity.value);

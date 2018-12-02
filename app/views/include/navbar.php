@@ -51,7 +51,7 @@
                                             <?php foreach($_SESSION['cart_items'] as $product):?>
                                                 <li>
                                                     <div class="inside-cart-image"><img src="<?=__URL__ ?><?=$product['product_image']?>" alt="product name" /></div>
-                                                    <button>x</button>
+                                                    <button onclick=removeItem(<?=$product['product_id']?>)>x</button>
                                                     <a href="<?=__URL__?>/products/detail/<?=$product['product_id']?>"><?=$product['product_name']?></a>
                                                     <p>Unit price <?=number_format($product['product_price'])?> VND</p>
                                                     <p>Q-ty: <?=$product['quantity']?></p>
