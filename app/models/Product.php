@@ -14,9 +14,18 @@
             return $product->Quantity;
         }
 
+        public function increaseView($productId){
+            $this->db->query('UPDATE product
+                            SET ViewCount = ViewCount + 1
+                            WHERE ProductId = :productId
+                            ');
+            $this->db->bind(':productId', $productId);
+            $this->db->execute();
+        }
+
         public function updateQuantity($productId, $quantity){
             $this->db->query('UPDATE product
-                            SET Quantity = :quantity
+                            SET Quantity = Quantity - :quantity, SellCount = SellCount + :quantity
                             WHERE ProductId = :productId
                             ');
             $this->db->bind(':quantity', $quantity);

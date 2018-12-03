@@ -99,7 +99,7 @@
                 $data['account'] = $accountInfo;
                 $data['cart_items'] = $_SESSION['cart_items'];
                 $data['total'] = getTotalPrice();
-                print_r($data);
+                //print_r($data);
                 $this->view('cart/checkout', $data);
             }
         }

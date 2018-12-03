@@ -19,9 +19,9 @@
         }
 
         private function getLastOrderId(){
-            $this->db->query('SELECT MAX(OrderId) FROM order_product');
-            $orderId = $this->db->execute();
-            return $orderId;
+            $this->db->query('SELECT MAX(OrderId) as Id FROM order_product');
+            $orderId = $this->db->getSingle();
+            return $orderId->Id;
         }
 
         public function createOrderDetail($orderId, $detail){

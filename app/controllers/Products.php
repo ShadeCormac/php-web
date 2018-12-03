@@ -6,8 +6,10 @@
         public function detail($id){
             $data['product'] = $this->productModel->getProduct($id);
             if($data['product'] == NULL){
-                die('cant find product..');
+                redirect('pages/index');
+                exit();
             }
+            $this->productModel->increaseView($id);
             $data['related_brand_products'] = $this->productModel->getRelatedBrandProducts($data['product']->Producer);
             $data['related_type_products'] = $this->productModel->getRelatedTypeProducts($data['product']->CategoryName);
             $this->view('products/detail', $data);

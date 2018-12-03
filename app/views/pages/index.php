@@ -37,7 +37,9 @@
                                             <div class="product-details text-center">  
                                                 <h1 class='my-5'><a href="<?=__URL__?>/products/detail/<?=$product->ProductId?>"><?=$product->ProductName?></a></h1>
                                                 <div class="product-price">
-                                                    <i onclick=addtoCart(<?=$product->ProductId?>) class="icon-257" title="add to cart"></i>
+                                                <?php if($product->Quantity > 0):?>
+                                                <i onclick=addtoCart(<?=$product->ProductId?>) class="icon-257" title="add to cart"></i>
+                                                <?php endif;?>
                                                     <?=number_format($product->Price)?> VND
                                                 </div>
                                             </div>
@@ -156,7 +158,9 @@
                                             <div class="product-details text-center">  
                                                 <h1 class='my-5'><a href="<?=__URL__?>/products/detail/<?=$product->ProductId?>"><?=$product->ProductName?></a></h1>
                                                 <div class="product-price">
-                                                    <i onclick=addtoCart(<?=$product->ProductId?>) class="icon-257" title="add to cart"></i>
+                                                <?php if($product->Quantity > 0):?>
+                                                <i onclick=addtoCart(<?=$product->ProductId?>) class="icon-257" title="add to cart"></i>
+                                                <?php endif;?>
                                                     <?=number_format($product->Price)?> VND
                                                 </div>
                                             </div>
@@ -194,7 +198,9 @@
                                             <div class="product-details text-center">  
                                                 <h1 class='my-5'><a href="<?=__URL__?>/products/detail/<?=$product->ProductId?>"><?=$product->ProductName?></a></h1>
                                                 <div class="product-price">
-                                                    <i onclick=addtoCart(<?=$product->ProductId?>) class="icon-257" title="add to cart"></i>
+                                                <?php if($product->Quantity > 0):?>
+                                                <i onclick=addtoCart(<?=$product->ProductId?>) class="icon-257" title="add to cart"></i>
+                                                <?php endif;?>
                                                     <?=number_format($product->Price)?> VND
                                                 </div>
                                             </div>

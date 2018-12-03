@@ -67,9 +67,14 @@
                                             <div class="product-details">    
                                                 <h1 class='text-center' style='font-color:white'><a href="<?=__URL__;?>/products/detail/<?=$product->ProductId;?>"><?=$product->ProductName?></a></h1>
                                                 
-                                                <div class="product-price">
-                                                    <i onclick=addtoCart(<?=$product->ProductId?>) class="icon-257" title="add to cart"></i>
+                                                <div class="product-price text-center">
                                                     <?=number_format($product->Price);?> VND
+                                                    <?php if($product->Quantity > 0):?>
+                                                    <i onclick=addtoCart(<?=$product->ProductId?>) class="icon-257" title="add to cart"></i>
+                                                    
+                                                    <?php else:?>
+                                                    <div class="text-center">Out of stock</div>
+                                                    <?php endif;?>
                                                 </div>
                                             </div>
                                         </div>

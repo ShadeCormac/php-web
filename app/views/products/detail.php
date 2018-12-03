@@ -16,9 +16,11 @@
                             <div class="clear"></div>
                             
                             <div class="quantity">
+                                <?php if($data['product']->Quantity > 0):?>
                                 <input type="button" value="-" class="minus" onclick=decreaseQtt()>
                                 <input type="number" step="1" min="1" max="<?=$data['product']->Quantity?>" name="quantity" id='quantity-id' value="1" title="Qty" class="input-text qty text">
                                 <input type="button" value="+" class="plus" onclick=addQtt()>
+                                <?php endif;?>
                                 <span><?=$data['product']->SellCount?> sold / <?=$data['product']->Quantity?> available</span>
                             </div>
                             <hr/>
@@ -32,7 +34,11 @@
                                             <input type="hidden" name ='product-name' value='<?=$data['product']->ProductName?>'>
                                             <input type="hidden" name ='product-image' value='<?=$data['product']->ImageSource?>'>
                                             <input type="hidden" name ='product-price' value='<?=$data['product']->Price?>'>
+                                            <?php if($data['product']->Quantity > 0):?>
                                             <input type='submit' value="Add to shopping bag"  name='btn-add-to-cart' class="button-2">
+                                            <?php else:?>
+                                            <h5>Out of stock... </h5>
+                                            <?php endif;?>
                                     </div>
                                 </div>
                             </form>
@@ -44,14 +50,6 @@
                                 <div class="tab-pane active" id="description">
                                     <p><?=nl2br($data['product']->Description)?></p>
                                     
-                                    <ul class="social-share">
-                                        <li><span>Share</span></li>
-                                        <li><a href="#"><i class="icon-160" title="161"></i></a></li>
-                                        <li><a href="#"><i class="icon-138" title="161"></i></a></li>
-                                        <li><a href="#"><i class="icon-106" title="161"></i></a></li>
-                                        <li><a href="#"><i class="icon-169" title="161"></i></a></li>
-                                        <li><a href="#"><i class="icon-163" title="161"></i></a></li>
-                                    </ul>
                                 </div>
                                 
                             </div> 
@@ -82,7 +80,9 @@
                                         <div class="product-details">  
                                             <h1><a href="<?=__URL__ ?>/products/detail/<?=$product->ProductId?>"><?=$product->ProductName?></a></h1>
                                             <div class="product-price">
+                                                <?php if($product->Quantity > 0):?>
                                                 <i onclick=addtoCart(<?=$product->ProductId?>) class="icon-257" title="add to cart"></i>
+                                                <?php endif;?>
                                                 <?=number_format($product->Price)?> VND
                                             </div>
                                         </div>
@@ -116,7 +116,9 @@
                                         <div class="product-details">  
                                             <h1><a href="<?=__URL__ ?>/products/detail/<?=$product->ProductId?>"><?=$product->ProductName?></a></h1>
                                             <div class="product-price">
+                                                <?php if($product->Quantity > 0):?>
                                                 <i onclick=addtoCart(<?=$product->ProductId?>) class="icon-257" title="add to cart"></i>
+                                                <?php endif;?>
                                                 <?=number_format($product->Price)?> VND
                                             </div>
                                         </div>
