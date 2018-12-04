@@ -35,5 +35,9 @@
             $this->db->execute();
             return $this->db->rowCount();
         }
+
+        public function viewOrderHistory(){
+            
+        }
     }
 ?>
