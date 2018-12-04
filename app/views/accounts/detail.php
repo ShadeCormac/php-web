@@ -30,10 +30,10 @@
                 <div class="panel-body">
                     <h3 class="panel-title pull-left">Change current password</h3>
                     <br><br>
-                    <form class="form-horizontal" name='changePassword' action="<?=__URL__?>/accounts/changepassword" method='POST'>
+                    <form class="form-horizontal" name='changePassword' action="<?=__URL__?>/accounts/changePassword" method='POST'>
                         <div class="row">
                             <div class="col-md-10">
-                                <input type="password" class="form-control" id="keywords" name='newPassword' placeholder="">
+                                <input type="password" class="form-control" id="keywords" name='password' placeholder="">
                             </div>
 
                             <div class="col-md-2">

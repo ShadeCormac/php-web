@@ -27,9 +27,6 @@
                     $grouped[$order->OrderId]['SumPrice'] = $order->SumPrice;
                     $grouped[$order->OrderId]['CreatedAt'] = $order->CreatedAt;
                 }
-
-                //print_r($grouped);
-                //exit();
             ?>
            
             <?php foreach($grouped as $key => $order): ?>
@@ -43,7 +40,7 @@
                         <h3><?=$order['CreatedAt']?></h3>
                         <h3 class="panel-title pull-left">Total</h3>
                         <br><br>
-                        <h3><?=$order['SumPrice']?></h3>
+                        <h3><?=number_format($order['SumPrice'])?> VND</h3>
                         <h5 class="panel-title pull-left">Detail </h5>
                         <br><br>
                         <?php foreach($order['OrderDetail'] as $productId => $product):?> 

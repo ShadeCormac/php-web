@@ -217,5 +217,23 @@
             $data =['history' => $orderHistory];
             $this->view('accounts/history', $data);
         }
+
+        public function changePassword(){
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $flag = 0;
+                if(empty($_POST['password'])){
+                    $flag = 1;
+                }else if(strlen($_POST['password']) < 6){
+                    $flag = 1;
+                }
+                if($flag == 0){
+                    
+                    $this->accountModel->changePassword($_SESSION['userid'], password_hash($_POST['password'], PASSWORD_DEFAULT));  
+                    
+                }
+
+                redirect('accounts/detail');
+            }
+        }
     }
 ?>

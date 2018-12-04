@@ -54,5 +54,16 @@
             $this->db->execute();
             return $this->db->rowCount();
         }
+
+        public function changePassword($accountId, $password){
+            $this->db->query('UPDATE account
+                            SET Pass = :pass
+                            WHERE AccountId = :accountId
+                            ');
+            $this->db->bind(':pass', $password);
+            $this->db->bind(':accountId', $accountId);
+            $this->db->execute();
+            
+        }
     }
 ?>
