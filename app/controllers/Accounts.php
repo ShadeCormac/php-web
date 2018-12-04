@@ -5,7 +5,7 @@
         }
 
         public function index(){
-            if(!isLoggedIn()){
+            if(isLoggedIn()){
                 //already logged in, redirect to details
                 redirect('accounts/detail');
             }else{
@@ -163,7 +163,7 @@
             if(isLoggedIn()) {              
                     $row = $this->accountModel->getUserDetail($_SESSION['username']);
                     $data = [
-                        'detail' => $row
+                        'detail' => $row, 
                     ];
                     //redirect('accounts');
                     $this->view('accounts/detail', $data); 
@@ -172,6 +172,50 @@
         public function logout(){
             session_destroy();
             redirect('pages/index');
+        }
+
+        public function update(){
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                if(isset($_POST['address']) && isset($_POST['contact-number'])){
+                    if(!empty($_POST['address']) && !empty($_POST['contact-number'])){
+                        if(preg_match("/^[0-9]{10}$/", $_POST['contact-number'])){
+                            //regex passed
+                            $detail = [
+                                'Address' => $_POST['address'],
+                                'Phone' => $_POST['contact-number']
+                                    ];                    
+                            $this->accountModel->UpdateShippingDetail($_SESSION['username'], $detail);
+                                redirect('accounts/detail');
+                        }else {
+                            //phone number is not valid
+                            redirect('accounts/update');
+                        }
+                    }else {
+                        //empty stuff
+                        redirect('accounts/update');
+                    }
+                }else{
+                    die('w');
+                }
+
+            }else{
+                if(isLoggedIn()){              
+                    $row = $this->accountModel->getUserDetail($_SESSION['username']);
+                    $data = [
+                        'detail' => $row, 
+                    ];
+                    //redirect('accounts');
+                    $this->view('accounts/update', $data); 
+                }    
+            }
+            
+        }
+
+        public function history(){
+            $this->orderModel = $this->model("Order");
+            $orderHistory = $this->orderModel->viewOrderHistory($_SESSION['userid']);
+            $data =['history' => $orderHistory];
+            $this->view('accounts/history', $data);
         }
     }
 ?>

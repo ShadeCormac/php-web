@@ -75,3 +75,11 @@ function post(path, params, method) {
     document.body.appendChild(form);
     form.submit();
 }
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+  
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+  })

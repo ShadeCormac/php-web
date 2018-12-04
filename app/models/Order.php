@@ -36,8 +36,14 @@
             return $this->db->rowCount();
         }
 
-        public function viewOrderHistory(){
-            
+        public function viewOrderHistory($customerId){
+            $this->db->query('SELECT o.OrderId, o.SumPrice, o.CustomerId, o.CreatedAt, d.Quantity, d.ProductId, p.ProductName, p.Price
+                             FROM order_product as o join order_detail as d on o.OrderId = d.OrderId join product as p on d.ProductId = p.ProductId
+                            Where CustomerId = :customerId
+                            ORDER BY o.CreatedAt DESC
+                            ');
+            $this->db->bind(':customerId', $customerId);
+            return $this->db->resultSet();
         }
     }
 ?>

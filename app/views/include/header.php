@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="<?php echo __URL__; ?>/css/bootstrap.css" type='text/css'/> 
         <!-- <link rel="stylesheet" href="<?php //echo __URL__; ?>/css/bootstrap-4.css" type='text/css'/>  -->
         <script src='https://www.google.com/recaptcha/api.js'></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
     <body>
