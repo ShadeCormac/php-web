@@ -71,9 +71,6 @@
                                                     <?=number_format($product->Price);?> VND
                                                     <?php if($product->Quantity > 0):?>
                                                     <i onclick=addtoCart(<?=$product->ProductId?>) class="icon-257" title="add to cart"></i>
-                                                    
-                                                    <?php else:?>
-                                                    <div class="text-center">Out of stock</div>
                                                     <?php endif;?>
                                                 </div>
                                             </div>
