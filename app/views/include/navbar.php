@@ -13,15 +13,17 @@
                     <div class="col-md-8 mx-auto">
                         <ul class="header-middle-account">
                             
-                            <?= !empty($_SESSION['isLoggedIn'])?
-                            '
-                            <li><a href="'. __URL__ . '/accounts/detail"><i class="icon-330" title="My account"></i> My account</a></li>
-                            <li><a href="'. __URL__ . '/accounts/logout" ><i class="icon-352" title="Logout"></i>Log out</a></li>
-                            ' 
-                            :'
-                            <li><a href="'. __URL__ . '/accounts/register"><i class="icon-351" title="Register"></i>Register</a></li> 
-                            <li><a href="'. __URL__ . '/accounts/login"><i class="icon-352" title="Login"></i> Login</a></li>
-                            ' ;?>   
+                            <?php if(!empty($_SESSION['isLoggedIn'])):?>
+                            
+                            <li><a href="<?=__URL__?>/accounts/detail"><i class="icon-330" title="My account"></i> My account</a></li>
+                            <li><a href="<?=__URL__?>/accounts/logout" ><i class="icon-352" title="Logout"></i>Log out</a></li>
+                            <?php if($_SESSION['usertype'] == 1):?>
+                                <li><a href="<?=__URL__?>/admin"><i class="icon-329" title="Dashboard"></i> Dashboard</a></li>
+                            <?php endif;?>>
+                            <?php else:?>
+                            <li><a href="<?=__URL__?>/accounts/register"><i class="icon-351" title="Register"></i>Register</a></li> 
+                            <li><a href="<?=__URL__?>/accounts/login"><i class="icon-352" title="Login"></i> Login</a></li>
+                            <?php endif;?>
                                
                             <li><a href="<?=__URL__?>/cart/"><i class="icon-259" title="Cart"></i> Cart</a></li>
                         </ul>   

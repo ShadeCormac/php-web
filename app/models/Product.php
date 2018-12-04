@@ -137,5 +137,84 @@
             //$this->db->bind(':columnName', $columnName);
             return $this->db->resultSet();
         }
+        public function UpdateImage($productId, $path){
+            $this->db->query('UPDATE product
+                            SET ImageSource = :path
+                            WHERE ProductId = :productId
+                            ');
+            $this->db->bind(":path", $path);
+            $this->db->bind(':productId', $productId);
+            $this->db->execute();
+        }
+
+        public function deleteProduct($productId) {
+            $sql = 'DELETE FROM product where ProductId = :id';
+            $this->db->query($sql);
+            $this->db->bind(':id', $productId);
+            $this->db->execute();
+        }
+
+        public function getLatestProduct(){
+            $this->db->query('Select MAX(ProductId) as Id FROM product');
+            return $this->db->getSingle()->Id;
+        }
+
+        public function insertProduct($param){
+            $sql = 'INSERT INTO product ( ProductName, Description, ImageSource, CategoryId, Producer, Origin, Price, ViewCount, SellCount, Quantity)
+                    values(:ProductName, :Description,0, :CategoryId, :Producer, :Origin, :Price, 0, 0, :Quantity)';
+            $this->db->query($sql);
+            $this->db->bind(':ProductName', $param["ProductName"]);
+            $this->db->bind(':Description', $param["Description"]);
+            //$this->db->bind(':ImageSource', $param["ImageSource"]);
+            $this->db->bind(':CategoryId', $param["Category"]);
+            $this->db->bind(':Producer', $param["Producer"]);
+            $this->db->bind(':Origin', $param["Origin"]);
+            $this->db->bind(':Price', $param["Price"]);
+            //$this->db->bind(':ViewCount', $param["ViewCount"]);
+            //$this->db->bind(':SellCount', $param["SellCount"]);
+            $this->db->bind(':Quantity', $param["Quantity"]);
+            $this->db->execute();
+        }
+
+        public function updateProduct($productId, $product){
+            $sql = 'UPDATE product
+                    SET ProductName = :ProductName, Description = :Description,
+                    CategoryId = :CategoryId, Producer = :Producer, Origin = :Origin, Price = :Price,
+                    Quantity = :Quantity
+                    where ProductId = :id';
+             $this->db->query($sql);
+             $this->db->bind(':id', $productId);
+             $this->db->bind(':ProductName', $product["ProductName"]);
+             $this->db->bind(':Description', $product["Description"]);
+            // $this->db->bind(':ImageSource', $product["ImageSource"]);
+             $this->db->bind(':CategoryId', $product["Category"]);
+             $this->db->bind(':Producer', $product["Producer"]);
+             $this->db->bind(':Origin', $product["Origin"]);
+             $this->db->bind(':Price', $product["Price"]);
+             $this->db->bind(':Quantity', $product["Quantity"]);
+             $this->db->execute();
+        }
+        public function getAllCategory(){
+            $sql = 'SELECT *
+                    FROM category';
+            $this->db->query($sql);
+            $data = $this->db->resultSet();
+            return $data;
+        }
+        public function getAllProducts($searchString){
+            $sql = 'SELECT * FROM product as p join category as c on p.CategoryId = c.CategoryId';
+            if ($searchString != '') {
+                $sql = $sql . ' where p.ProductName like :searchString';
+                $this->db->query($sql);
+                $this->db->bind(':searchString', '%'.$searchString.'%');
+            } else {
+                $this->db->query($sql);
+            }
+            
+            $data = $this->db->resultSet();
+            if($this->db->rowCount() > 0){
+                return $data;
+            }  
+        }
     }
 ?>

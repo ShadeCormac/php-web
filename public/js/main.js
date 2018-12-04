@@ -1,4 +1,4 @@
-function addQtt(){
+function addQuantity(){
     let quantity = document.getElementById('quantity-id');
     //console.log(quantity.value);
     let total = Number(quantity.value);
@@ -11,11 +11,9 @@ function addQuantity(id){
     console.log('added');
 }
 
-function addtoCart(id){
-    post('http://localhost:8080/php-web/cart/add', {product_id : id, quantity: 1});
-}
 
-function decreaseQtt(){
+
+function decreaseQuantity(){
     let quantity = document.getElementById('quantity-id');
     //console.log(quantity.value);
     if(quantity.value > 1)
