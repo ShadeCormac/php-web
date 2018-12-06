@@ -11,7 +11,7 @@
             </div>
             <!-- END THE SLIDER
             ====================================================================== -->
-
+            <?php flash('add-to-cart')?>
             <!-- Newest products -->
             <div class="box">
                 <div class="container">

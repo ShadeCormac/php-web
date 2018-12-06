@@ -65,5 +65,34 @@
             $this->db->execute();
             
         }
+
+        public function accountUpdate($accountId,$type)
+        {
+            $sql = 'UPDATE account
+                    SET Type = :type
+                    WHERE AccountId = :id';
+            $this->db->query($sql);
+            $this->db->bind(':id',$accountId);
+            $this->db->bind(':type',$type);
+            $this->db->execute();
+        }
+
+        public function getAccount($id){
+            $sql = 'SELECT*
+                    FROM account as ac
+                    where ac.AccountId = :id';
+            $this->db->query($sql);
+            $this->db->bind(':id', $id);
+            $account = $this->db->getsingle();
+            return $account;
+        }
+
+        public function getAllAccount(){
+            $sql = 'SELECT*
+                    FROM account';
+            $this->db->query($sql);
+            $data = $this->db->resultSet();
+            return $data;
+        }
     }
 ?>

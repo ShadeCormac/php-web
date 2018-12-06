@@ -120,6 +120,7 @@
                             'product_price' => $productDetail->Price
                         ];
                     }else {
+                        flash("add-to-cart", "Fail adding product to cart", "alert-attention");
                         redirect('pages/index');
                         exit();
                     }

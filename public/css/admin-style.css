@@ -4,3 +4,22 @@
 .btAdd{
   text-align: right;
 }
+.Pending td{
+  background-color: red !important;
+}
+
+.Proccessing td{
+  background-color: orange !important;
+}
+
+.Delivered td{
+  background-color: green !important;
+}
+
+#order-table{
+  background-color: white !important; 
+}
+
+#control-label{
+  text-align: right !important;
+}

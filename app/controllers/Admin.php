@@ -126,6 +126,52 @@
       }
     }
 
+    public function order() {
+      $this->orderModel = $this->model("Order");
+      $data= $this->orderModel->getAllOrder();
+      $this->view('admin/order',$data);
+    }
+
+    public function orderEdit($orderId) {
+      $data = [];
+      $this->orderModel = $this->model("Order");
+      $data['order_detail'] = $this->orderModel->getOrder($orderId);
+      $this->accountModel = $this->model('Account');
+      $data['user_detail'] = $this->accountModel->getUserDetail($data['order_detail'][0]->UserName);      
+      $this->view('admin/orderEdit', $data);
+    }
+
+  public function orderUpdate(){
+    if(!empty($_POST['OrderStatus'])) {
+      $this->orderModel = $this->model("Order");
+      $id = $_POST['OrderId'];
+      $order = $this->orderModel->getOrder($id);
+      $this->orderModel->updateOrder($id, $_POST['OrderStatus']);
+      redirect('admin/order');
+    }
+    else {
+      redirect('admin/orderEdit/' . $_POST['OrderId']);
+    }
+  }
+
+    public function account(){
+      $this->accountModel = $this->model('Account');
+      $data = $this->accountModel->getAllAccount();
+      $this->view('admin/account', $data);
+    }
+
+    public function accountEdit($accountId){
+      $this->accountModel = $this->model('Account');
+      if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $type = $_POST['Type'];
+        $this->accountModel->accountUpdate($accountId,$type);
+        redirect('admin/account');
+      }else {
+        
+        $data = $this->accountModel->getAccount($accountId);
+        $this->view('/admin/accountEdit', $data);
+      }
+    }
 
   }
 ?>
