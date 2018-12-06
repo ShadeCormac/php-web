@@ -1,6 +1,11 @@
 <?php require __ROOT__.'/views/include/header.php'; ?>
 <div class="content">
             <div class="container">
+                <div class="text-center">
+                    <?php flash('cart-update-message'); flash('cart-message'); ?>
+
+                </div>
+
                 <h2>Shopping cart</h2>
 
                 <div class="shopping-cart">
@@ -45,22 +50,18 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <a href="<?=__URL__ ;?>" class="button-7">Continue shopping</a>
                         </div>
-                        <div class="col-md-5">
-                            <div class="coupon">
-                                <input class="input-line" type="text" name="coupon" />
-                                <button class="button-6">Apply</button>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
+                        
+                        <div class="col-md-6">
                             <div class="checkout-total">
                                 <p>Total : <?=number_format(getTotalPrice())?> VND</p>
                                 <a href='<?=__URL__?>/cart/checkout' class="button-6">Checkout</a>
                             </div>
                         </div>
-                    </div>  
+                    </div>
+                    <div style="padding-top:55px;"> </div>
                 </div>             
             </div>
         </div>

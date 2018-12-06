@@ -1372,18 +1372,21 @@ h4 {
 	overflow: hidden;
 	padding: 2px;
 	box-shadow: 0px 0px 3px #ccc;
-	margin-top: 3px;
+	margin-top: 5px;
 }
 .product .product-details {
 	background: url('../images/elements/price-bg.png') repeat-x top left;
+	height: 120px;
 	color: #fff;
+	
 }
 .product .product-details h1 {
 	padding: 10px 15px 0;
+	
 }
 .product .product-details h1,
 .product .product-details h1 a {
-	font-size: 20px;
+	font-size: 14px;
 	color: #fff;
 	margin-bottom: 3px;
 	line-height: 1.5em;
@@ -1405,6 +1408,10 @@ h4 {
 	background: rgba(255,255,255, 0.5);
 	position: relative;
 	margin: 0;
+}
+
+.product .product-cover img{
+	height:145px;
 }
 .product .product-cover .product-action {
 	top: 0;

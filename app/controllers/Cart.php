@@ -20,6 +20,7 @@
                 if(isset($_POST['submit'])){    
                     if(empty($_SESSION['cart_items'])){
                          //empty cart
+                         flash('cart-message', 'Can not checkout while cart is empty' , 'alert-retry');
                          redirect('cart/index');
                         exit();
                     }
@@ -52,6 +53,7 @@
                                     }                           
                                     //step 3: unset cart_items session
                                     unset($_SESSION['cart_items']);
+                                    flash('cart-message', 'Great, you just made an order');
                                     //step 4: redirect to main page
                                     redirect('pages/index');
                                             
@@ -85,6 +87,7 @@
                         }                           
                         //step 3: unset cart_items session
                         unset($_SESSION['cart_items']);
+                        flash('cart-message', 'Great, you just made an order');
                         //step 4: redirect to main page
                         redirect('pages/index');
                     }         
@@ -97,7 +100,8 @@
                 $accountInfo = $this->accountModel->getUserDetail($_SESSION['username']);
                 
                 $data['account'] = $accountInfo;
-                $data['cart_items'] = $_SESSION['cart_items'];
+                if(!empty($_SESSION['cart_items']))
+                    $data['cart_items'] = $_SESSION['cart_items'];
                 $data['total'] = getTotalPrice();
                 //print_r($data);
                 $this->view('cart/checkout', $data);
@@ -120,7 +124,7 @@
                             'product_price' => $productDetail->Price
                         ];
                     }else {
-                        flash("add-to-cart", "Fail adding product to cart", "alert-attention");
+                        flash("add-to-cart-message", "Failed adding product to cart", "alert-attention");
                         redirect('pages/index');
                         exit();
                     }
@@ -138,10 +142,12 @@
                                 'product_price' => $_POST['product-price'],
                         ];
                     }else {
+                        flash("add-to-cart-message", "Failed adding product to cart", "alert-attention");
                         redirect('pages/index');
                         exit();
                     }
                 }
+                flash("add-to-cart-message", "Product added");
                addToCart($product, $_POST['quantity'] + $quantity);
             }
             //$data = [];
@@ -158,10 +164,18 @@
                             $max_quantity = $this->productModel->getQuantity($key);
                             if(getCurrentQuantity($key) + (int)$_POST['quantity'] <= $max_quantity){
                                 $_SESSION['cart_items'][$key]['quantity'] = (int)$_SESSION['cart_items'][$key]['quantity'] + (int)$_POST['quantity'];
+                                
                                 if($_SESSION['cart_items'][$key]['quantity'] <= 0){
                                     unset($_SESSION['cart_items'][$key]);
+                                    flash('cart-update-message', "Product removed");
+                                }
+                                else 
+                                {
+                                    flash('cart-update-message', "Quantity updated");
                                 }
                                 break;
+                            }else {
+                                flash('cart-update-message', "Quantity exceeded compares to stock");
                             }
                                 
                         }
@@ -179,6 +193,8 @@
                     foreach($_SESSION['cart_items'] as $key => $value){
                         if($key == $_POST['product_id']){
                             unset($_SESSION['cart_items'][$key]);
+                            flash('cart-update-message', "Product removed");
+                            break;
                         }
                     }
                     //$this->view('cart/index');

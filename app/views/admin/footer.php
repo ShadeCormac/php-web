@@ -22,7 +22,7 @@
     
     <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
 
-    <script  src="<?php echo __URL__; ?>/js/index-form.js"></script> -->
+    <script  src="</js/index-form.js"></script> -->
   </body>
 
 </html>

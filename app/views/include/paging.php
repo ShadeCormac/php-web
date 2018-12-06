@@ -11,14 +11,20 @@
                                     $start_page = ($data['current_page'] <= 2) ? 1 : $data['current_page'] - 2;
                                     $end_page = ($data['current_page'] <= 2) ? 5 : $data['current_page'] + 2;
                                 }else {
-                                    if($data['current_page'] - (4 - ($totalPages - $data['current_page'])) <= 0){
+                                    $val = (4 - ($totalPages - $data['current_page']));
+                                    $end_page = $totalPages;
+                                    if($val < 0){
                                         $start_page = $data['current_page'];
+                                    }
+                                    else if($val == 0 && $data['current_page'] != 1){
+                                        $start_page = $data['current_page'] - 1;
+                                        $end_page = $totalPages - 1;
                                     }
                                     else {
                                         $start_page = $data['current_page'] - (4 - ($totalPages - $data['current_page']));
                                     }
                                     
-                                    $end_page = $totalPages;
+                                    
                                 }
                                 if(empty($data['is_search'])){
                                     for($index = $start_page; $index <= $end_page; $index++){

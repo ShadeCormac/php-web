@@ -16,12 +16,14 @@
 
                                 <div class="checkout-info-box">
                                     <!-- REPEAT PRODUCT -->
-                                    <?php foreach($data['cart_items'] as $key => $product) :?>
-                                        <ul class="checkout-product">
-                                            <li class="checkout-product-1"><?=$product['product_name']?> x<?=$product['quantity']?></li>
-                                            <li class="checkout-product-2"><?=number_format($product['product_price'] * $product['quantity'])?> VND</li>
-                                        </ul>
-                                    <?php endforeach;?>
+                                    <?php if(!empty($data['cart_items'])):?> 
+                                        <?php foreach($data['cart_items'] as $key => $product) :?>
+                                            <ul class="checkout-product">
+                                                <li class="checkout-product-1"><?=$product['product_name']?> x<?=$product['quantity']?></li>
+                                                <li class="checkout-product-2"><?=number_format($product['product_price'] * $product['quantity'])?> VND</li>
+                                            </ul>
+                                        <?php endforeach;?>
+                                    <?php endif;?>
                                     <ul class="checkout-product o-last">
                                         <li class="checkout-product-1">Shipping</li>
                                         <li class="checkout-product-2">Free shipping</li>

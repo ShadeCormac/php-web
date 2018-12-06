@@ -25,6 +25,8 @@
 
     <link rel='stylesheet' href="<?php echo __URL__; ?>/css/admin-style.css">
 
+    
+
     <meta charset="UTF-8">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
@@ -47,7 +49,7 @@
     </button>
 
     <!-- Navbar Search -->
-    <!-- <form action="<?php echo __URL__; ?>/admin/index" method="get" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+    <!-- <form action="/admin/index" method="get" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
       <div class="input-group">
         <input name="search" type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
         <div class="input-group-append">

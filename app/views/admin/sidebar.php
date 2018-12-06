@@ -1,24 +1,36 @@
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
       <li class="nav-item active">
-          <a class="nav-link" href="/php-web/index">
+          <a class="nav-link" href="<?=__URL__?>/php-web/index">
           <i class="fas fa-home"></i>
-            <span>Home</span>
+            <span>Shop Page</span>
           </a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/php-web/admin/index">
+          <a class="nav-link" href="<?=__URL__?>/admin/index">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
+            <span>Products</span>
           </a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Another function</span>
+      
+        <li class="nav-item active">
+        <a class="nav-link" href="<?=__URL__?>/admin/add">
+          <i class="fas fa-plus-square"></i>
+          <span>Add product</span>
           </a>
-          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="/php-web/admin/add">Add</a>
-          </div>
+        </li>
+
+        <li class="nav-item active">
+        <a class="nav-link" href="<?=__URL__?>/admin/order">
+          <i class="fas fa-ticket-alt"></i>
+          <span>Orders</span>
+          </a>
+        </li>
+        
+        <li class="nav-item active">
+        <a class="nav-link" href="<?=__URL__?>/admin/account">
+          <i class="fas fa-user-alt"></i>
+          <span>Accounts</span>
+          </a>
         </li>
       </ul>     

@@ -185,13 +185,16 @@
                                 'Phone' => $_POST['contact-number']
                                     ];                    
                             $this->accountModel->UpdateShippingDetail($_SESSION['username'], $detail);
-                                redirect('accounts/detail');
+                            flash('account-detail-message', 'Update info succeeded.');
+                            redirect('accounts/detail');
                         }else {
                             //phone number is not valid
+                            flash('account-update-info-message', "Contact number is not valid.(10 digits)", 'alert-retry');
                             redirect('accounts/update');
                         }
                     }else {
                         //empty stuff
+                        flash('account-update-info-message', "Can not leave empty inputs.", 'alert-retry');
                         redirect('accounts/update');
                     }
                 }else{
@@ -223,15 +226,16 @@
                 $flag = 0;
                 if(empty($_POST['password'])){
                     $flag = 1;
+                    flash('account-detail-message', "Password can not be empty.", 'alert-retry');
                 }else if(strlen($_POST['password']) < 6){
+                    flash('account-detail-message', "Password has atleast 6 characters.", 'alert-retry');
                     $flag = 1;
                 }
                 if($flag == 0){
-                    
+                    flash('account-detail-message', "Password changed");
                     $this->accountModel->changePassword($_SESSION['userid'], password_hash($_POST['password'], PASSWORD_DEFAULT));  
                     
                 }
-
                 redirect('accounts/detail');
             }
         }

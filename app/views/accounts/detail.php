@@ -1,5 +1,7 @@
 <?php require __ROOT__.'/views/include/header.php'; ?>
 <div class="mainbody container">
+    <div class="text-center"><?php flash('account-detail-message')?></div>
+    
     <div class="row">
 
         <?php require __ROOT__.'/views/accounts/sidebar.php' ;?>

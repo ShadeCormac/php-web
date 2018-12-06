@@ -20,7 +20,7 @@
                         <table class="table table-striped " id="dataTable" width="100%" cellspacing="0">
                           
                           <thead>
-                            <tr>
+                            <tr >
                               <th scope="col">OrderID</th>
                               <th scope ='col'>User name</th>
                               <th scope="col">Address</th>
@@ -34,7 +34,7 @@
                           <tbody>
                           <?php if(!empty($data)): ?>
                             <?php foreach($data as $order):?>
-                            <tr>
+                            <tr class="<?=$order->OrderStatus?>">
                               <td><?=$order->OrderId;?></td>
                               <td><?=$order->UserName;?></td>
                               <td><?=$order->Address;?></td>

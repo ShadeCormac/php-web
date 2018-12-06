@@ -3,15 +3,19 @@
 <div class="content">
             <!-- =====================================================================
                  START THE SLIDER -->
+                 
             <div class="the-slider slider" data-tesla-plugin="slider" data-tesla-item=".slide" data-tesla-next=".slide-right" data-tesla-prev=".slide-left" data-tesla-container=".slide-wrapper">
                 <ul class="slide-wrapper">
                     <li class="slide"><img style="height:auto" src="<?=__URL__?>/images/photos/banner2.jpg" alt="banner"></li>
                 </ul>
                
             </div>
+            <div class="text-center">
+                    <?php flash('add-to-cart-message'); flash('cart-message');?>
+                 </div>
             <!-- END THE SLIDER
             ====================================================================== -->
-            <?php flash('add-to-cart')?>
+            
             <!-- Newest products -->
             <div class="box">
                 <div class="container">
