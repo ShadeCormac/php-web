@@ -21,7 +21,9 @@
                                         $end_page = $totalPages - 1;
                                     }
                                     else {
-                                        $start_page = $data['current_page'] - (4 - ($totalPages - $data['current_page']));
+                                        if($totalPages > 5)
+                                            $start_page = $data['current_page'] - (4 - ($totalPages - $data['current_page']));
+                                        else $start_page = 1;
                                     }
                                     
                                     
