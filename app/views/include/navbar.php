@@ -1,3 +1,10 @@
+    <?php 
+        if(@require_once(__ROOT__ . '/models/Category.php')){
+            require_once(__ROOT__ . '/models/Category.php');
+        }
+        $categoryModel = new Category();
+        $categories = $categoryModel->getAll();
+    ?>
       <div class="header">
             <div class="container">
                 
@@ -72,15 +79,13 @@
                         <li class="menu-item-has-children ">
                         <div class="small hidden-xs"><a href="#">Categories</a></div>                  
                             <ul>  
-                                <li><a href="<?=__URL__?>/products/views/laptop/">Laptop</a></li>
-                                <li><a href="<?=__URL__?>/products/views/mobile/">Mobile Device</a></li>
-                                <li><a href="<?=__URL__?>/products/views/headphone/">Headphone</a></li>
-                                <li><a href="<?=__URL__?>/products/views/keyboard/">Keyboard</a></li>  
+                            <?php foreach($categories as $cat): ?>
+                                <li><a href="<?=__URL__?>/products/views/<?=$cat->CategoryName?>/"><?=$cat->CategoryName?></a></li>
+                            <?php endforeach;?> 
                             </ul>
                         </li>
                         
-                        <li><a href="<?=__URL__?>/pages/about">About us</a></li>
-                        <li><a href="<?=__URL__?>/pages/contact">Contact</a></li>
+                        
                     </ul>
                     <div class="clear"></div>
                 </div>

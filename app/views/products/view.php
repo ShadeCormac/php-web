@@ -1,4 +1,5 @@
 <?php require __ROOT__.'/views/include/header.php'; ?>
+
 <div class="content">
             <div class="container">
                 <div class="all-products-details">
@@ -7,13 +8,18 @@
                         <div class="col-md-5">
                             <div class="sort-dropdown float-right">
                                 <span>Sorting methods <i class="icon-515" title="515"></i></span>
+                                <?php  
+                                    $curUrl = $_SERVER['REQUEST_URI'];
+                                    $pos = strpos($_SERVER['REQUEST_URI'], '&sort=');
+                                    $curUrl = $pos !== false? substr_replace($curUrl, "", $pos) : $curUrl; 
+                                ?>
                                 <ul>
-                                    <li><a href="<?=$_SERVER['REQUEST_URI'] . '&sort=cost-asc'?>">Cost low to high</a></li>
-                                    <li><a href="<?=$_SERVER['REQUEST_URI'] . '&sort=cost-desc'?>">Cost hight to low</a></li>
-                                    <li><a href="<?=$_SERVER['REQUEST_URI'] . '&sort=sale-asc'?>">Sales low to high</a></li>
-                                    <li><a href="<?=$_SERVER['REQUEST_URI'] . '&sort=sale-desc'?>">Sales high to low</a></li>
-                                    <li><a href="<?=$_SERVER['REQUEST_URI'] . '&sort=view-asc'?>">Top view low to high</a></li>
-                                    <li><a href="<?=$_SERVER['REQUEST_URI'] . '&sort=view-desc'?>">Top view high to low</a></li>
+                                    <li><a href="<?=$curUrl . '&sort=cost-asc'?>">Cost low to high</a></li>
+                                    <li><a href="<?=$curUrl . '&sort=cost-desc'?>">Cost hight to low</a></li>
+                                    <li><a href="<?=$curUrl . '&sort=sale-asc'?>">Sales low to high</a></li>
+                                    <li><a href="<?=$curUrl . '&sort=sale-desc'?>">Sales high to low</a></li>
+                                    <li><a href="<?=$curUrl . '&sort=view-asc'?>">Top view low to high</a></li>
+                                    <li><a href="<?=$curUrl . '&sort=view-desc'?>">Top view high to low</a></li>
                                 </ul>
                             </div>
                             <div class="clear"></div>
@@ -25,13 +31,11 @@
                         <div class="row">
                             <div class="col-md-12 col-xs-6">
                                 <div class="products-dropdown open-dropdown">
-                                    <span><i class="icon-515" title="515"></i>Accessories</span>
+                                    <span><i class="icon-515" title="515"></i>Categories</span>
                                     <ul>
-                                        <li><a href="#">Laptop</a></li>
-                                        <li><a href="#">Headphone</a></li>
-                                        <li><a href="#">Mobile device</a></li>
-                                        <li><a href="#">Keyboard</a></li>
-                                        
+                                    <?php foreach($data['categories'] as $cat) :?>
+                                        <li><a href="<?=__URL__?>/products/views/<?=strtolower($cat->CategoryName)?>"><?=$cat->CategoryName?></a></li>
+                                    <?php endforeach;?>
                                     </ul>
                                 </div>
                                 <div class="clear"></div>
@@ -39,13 +43,12 @@
                             
                             
                             <div class="col-md-12 col-xs-6">
-                                <div class="products-dropdown open-dropdown">
+                                <div class="products-dropdown">
                                     <span>Brands</span>
                                     <ul>
-                                        <li><a href="#">Samsung</a></li>
-                                        <li><a href="#">Apple</a></li>
-                                        <li><a href="#">Xiaomi</a></li>
-                                        
+                                    <?php foreach($data['brands'] as $brand):?>
+                                        <li><a href="<?=__URL__?>/products/brands/<?=$brand->Producer?>"><?=$brand->Producer?></a></li>
+                                    <?php endforeach;?> 
                                     </ul>
                                     <!-- <div class="products-dropdown-close">Clear <i class="icon-456" title="close"></i></div> -->
                                     <div class="clear"></div>

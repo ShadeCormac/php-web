@@ -3,6 +3,10 @@
         public function __construct(){
             $this->productModel = $this->model('Product');
         }
+        public function index(){
+            redirect('pages/index');
+            exit();
+        }
         public function detail($id){
             $data['product'] = $this->productModel->getProduct($id);
             if($data['product'] == NULL){
@@ -18,16 +22,30 @@
         public function brands($brandName, $pageNum = 1){
             $data = [];
             $data['brand'] = $brandName;
-            $data['products'] = $this->productModel->getProductsByBrand($brandName, $pageNum);
+            $this->categoryModel = $this->model('Category');
+            $sortMethod = '';
+            if(isset($_GET['sort'])){
+                $sortMethod = $_GET['sort'];
+            }
+            $data['categories'] = $this->categoryModel->getAll();
+            $data['brands'] = $this->productModel->getAllBrands();
+            $data['products'] = $this->productModel->getProductsByBrand($brandName, $pageNum, $sortMethod);
             $data['products_count'] = $this->productModel->count('Producer', $brandName);
             $data['current_page'] = $pageNum;
             $this->view('products/view', $data);
         }
         public function views($productType, $pageNum = 1){
+            $this->categoryModel = $this->model('Category');
             $data = [];
+            $data['categories'] = $this->categoryModel->getAll();
+            $data['brands'] = $this->productModel->getAllBrands();
             $data['type'] = $productType;   
             //$data['products'] = $this->productModel->getProducts($productType);
-            $data['products'] = $this->productModel->getProductsByPage($productType, $pageNum);
+            $sortMethod = '';
+            if(isset($_GET['sort'])){
+                $sortMethod = $_GET['sort'];
+            }
+            $data['products'] = $this->productModel->getProductsByPage($productType, $pageNum, $sortMethod);
             $data['products_count'] = $this->productModel->count('CategoryName', $productType);
             $data['current_page'] = $pageNum;
 
@@ -43,14 +61,20 @@
                 if(isset($_GET['sort'])){
                     //need to be implimented
                 }
-                
+                $this->categoryModel = $this->model('Category');   
+                $data['categories'] = $this->categoryModel->getAll();     
+                $data['brands'] = $this->productModel->getAllBrands();
                 //echo $pageNum;
                 //sanitize get array
                 $_GET = filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
                 //remove whitespace
                 $_GET['search-method'] = trim($_GET['search-method']);
                 $_GET['search'] = trim($_GET['search']);
-                $data['products'] = $this->productModel->getProducts($_GET['search-method'], $_GET['search'], $pageNum);
+                $sortMethod = '';
+                if(isset($_GET['sort'])){
+                    $sortMethod = $_GET['sort'];
+                }
+                $data['products'] = $this->productModel->getProducts($_GET['search-method'], $_GET['search'], $pageNum, $sortMethod);
                 $data['products_count'] = $this->productModel->count($_GET['search-method'], $_GET['search']);
                 $data['current_page'] = $pageNum;
                 $data['is_search'] = true;
@@ -60,8 +84,6 @@
                 redirect('pages/index');
             }
             
-        }
-        
-        
+        }      
     }
 ?>

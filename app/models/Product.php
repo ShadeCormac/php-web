@@ -54,13 +54,32 @@
             return $product;
         }
 
-        public function getProductsByBrand($brand, $pageNum){
+        public function getProductsByBrand($brand, $pageNum, $sortMethod){
             $productsPerPage = 9;
-            $this->db->query('SELECT * FROM product as p
+            $query ='SELECT * FROM product as p
             JOIN category as c on p.CategoryId = c.CategoryId
             WHERE p.Producer like :producer
-            LIMIT :rowNum , :productsPerPage
-            ');
+            
+            ' ;
+            if(!empty($sortMethod)){
+                $temp = explode('-', $sortMethod);
+                switch ($temp[0]){
+                    case "cost":
+                        $query .= ' ORDER BY Price ';
+                        break;
+                    case "sale":
+                        $query .= ' ORDER BY SellCount ';
+                        break;
+                    case "view":
+                        $query .= ' ORDER BY ViewCount ';
+                        break;
+                    default: 
+                        break;
+                }
+                $query .= $temp[1];               
+            }
+            $query .= ' LIMIT :rowNum , :productsPerPage';
+            $this->db->query($query);
             $this->db->bind(':producer', $brand);
     
             $rowNum = (($pageNum -1) * $productsPerPage);
@@ -72,13 +91,32 @@
             return $data;
         }
 
-        public function getProductsByPage($category, $pageNum){
+        public function getProductsByPage($category, $pageNum, $sortMethod){
             $productsPerPage = 9;
-            $this->db->query('SELECT * FROM product as p
+            
+            $query = 'SELECT * FROM product as p
             JOIN category as c on p.CategoryId = c.CategoryId
             WHERE c.CategoryName like :category
-            LIMIT :rowNum , :productsPerPage
-            ');
+            ';
+            if(!empty($sortMethod)){
+                $temp = explode('-', $sortMethod);
+                switch ($temp[0]){
+                    case "cost":
+                        $query .= ' ORDER BY Price ';
+                        break;
+                    case "sale":
+                        $query .= ' ORDER BY SellCount ';
+                        break;
+                    case "view":
+                        $query .= ' ORDER BY ViewCount ';
+                        break;
+                    default: 
+                        break;
+                }
+                $query .= $temp[1];               
+            }
+            $query .= ' LIMIT :rowNum , :productsPerPage';
+            $this->db->query($query);
             $this->db->bind(':category', $category);
     
             $rowNum = (($pageNum -1) * $productsPerPage);
@@ -91,12 +129,30 @@
         }
 
 
-        public function getProducts($type, $searchString, $page){
-            $this->db->query('SELECT * 
-                                    FROM product as p join category as c on p.CategoryId = c.CategoryId
-                                    where ' . $type . ' like :searchString
-                                    LIMIT :rowNum, :productsPerPage
-                                    ');
+        public function getProducts($type, $searchString, $page, $sortMethod){
+            $query = 'SELECT * 
+            FROM product as p join category as c on p.CategoryId = c.CategoryId
+            where ' . $type . ' like :searchString
+            ';
+            if(!empty($sortMethod)){
+                $temp = explode('-', $sortMethod);
+                switch ($temp[0]){
+                    case "cost":
+                        $query .= ' ORDER BY Price ';
+                        break;
+                    case "sale":
+                        $query .= ' ORDER BY SellCount ';
+                        break;
+                    case "view":
+                        $query .= ' ORDER BY ViewCount ';
+                        break;
+                    default: 
+                        break;
+                }
+                $query .= $temp[1];               
+            }
+            $query .= ' LIMIT :rowNum, :productsPerPage';
+            $this->db->query($query);
             $productsPerPage = 9;
             //$this->db->bind(':typeSearch', $type);
             $this->db->bind(':searchString', '%'.$searchString.'%');
@@ -118,6 +174,11 @@
                             LIMIT 0, 5
                             ');
             $this->db->bind(':categoryName', $categoryName);
+            return $this->db->resultSet();
+        }
+
+        public function getAllBrands(){
+            $this->db->query('SELECT DISTINCT Producer from product');
             return $this->db->resultSet();
         }
 

@@ -1,50 +1,37 @@
 <!-- ======================================================================
                                         START FOOTER
         ======================================================================= -->
+        <div style="margin-top:40px;"> </div>
         <div class="footer">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-xs-6">
                         <ul class="socials">
-                            <li><a href="#"><img class="img-h-auto" src="<?=__URL__;?>/images/elements/socials/facebook.png" alt="facebook"/>Facebook</a></li>
-                            <li><a href="#"><img class="img-h-auto" src="<?=__URL__;?>/images/elements/socials/twitter.png" alt="twitter"/>Twitter</a></li>
-                            <li><a href="#"><img class="img-h-auto" src="<?=__URL__;?>/images/elements/socials/youtube.png" alt="youtube"/>Youtube</a></li>
-                            <li><a href="#"><img class="img-h-auto" src="<?=__URL__;?>/images/elements/socials/googleplus.png" alt="google"/>Google+</a></li>
+                            <li><a href="https://www.facebook.com/ShadeCormac"><img class="img-h-auto" src="<?=__URL__;?>/images/elements/socials/facebook.png" alt="facebook"/>Facebook</a></li>
+                            <li><a href="https://twitter.com/ShadeCormac"><img class="img-h-auto" src="<?=__URL__;?>/images/elements/socials/twitter.png" alt="twitter"/>Twitter</a></li>
+                            
                         </ul>
                     </div>
                     <div class="col-md-3 col-xs-6">
                         <ul>
-                            <li><a href="#">Register now</a></li>
-                            <li><a href="#">Subscribe for newsletter</a></li>
-                            <li><a href="#">Checkout</a></li>
-                            <li><a href="#">Delivery</a></li>
-                            <li><a href="#">Contact us</a></li>
-                            <li><a href="#">Faq</a></li>
-                            <li><a href="#">Ask us</a></li>
-                            <li><a href="#">Our partners</a></li>
-                            <li><a href="#">About us</a></li>
+                            <li><a href="<?=__URL__?>/accounts/register">Register now</a></li>
+                            <li><a href="<?=__URL__?>/cart/">Cart</a></li>
+                            <li><a href="<?=__URL__?>/cart/checkout">Checkout</a></li>
                         </ul>
                     </div>
                     <div class="col-md-3 col-xs-6">
                         <ul>
-                            <li><a href="#">Payments</a></li>
-                            <li><a href="#">Size guide</a></li>
-                            <li><a href="#">Order tracking</a></li>
-                            <li><a href="#">Order history</a></li>
-                            <li><a href="#">Returns</a></li>
-                            <li><a href="#">Terms & conditions</a></li>
-                            <li><a href="#">Security & privacy</a></li>
+
+                            <li><a href="<?=__URL__?>/accounts/history">Order history</a></li>
                         </ul>
                     </div>
                     <div class="col-md-3 col-xs-6">
                         <ul class="menu-item">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Laptop</a></li>
-                            <li><a href="#">Mobile device</a></li>
-                            <li><a href="#">Headphone</a></li>
-                            <li><a href="#">Keyboard</a></li>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="<?=__URL__?>/pages/index">Home</a></li>
+                            <?php foreach($categories as $cat): ?>
+                                <li><a href="<?=__URL__?>/products/views/<?=$cat->CategoryName?>/"><?=$cat->CategoryName?></a></li>
+                            <?php endforeach;?> 
+                            
                         </ul>
                     </div>
                     

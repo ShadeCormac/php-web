@@ -130,7 +130,7 @@
                     $data['password_error'] = 'Password must be filled.';
                 }else {
                     //hit database for password
-                    if(!$this->accountModel->checkPassword($data['username'], $data['password'])){
+                    if(empty($data['username_error']) && !$this->accountModel->checkPassword($data['username'], $data['password'])){
                         $data['password_error'] = "Password does not match.";
                     }
                 }
