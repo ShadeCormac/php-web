@@ -10,16 +10,18 @@
                                 <span>Sorting methods <i class="icon-515" title="515"></i></span>
                                 <?php  
                                     $curUrl = $_SERVER['REQUEST_URI'];
-                                    $pos = strpos($_SERVER['REQUEST_URI'], '&sort=');
-                                    $curUrl = $pos !== false? substr_replace($curUrl, "", $pos) : $curUrl; 
+                                    $pos = strpos($_SERVER['REQUEST_URI'], 'sort=');
+                                    $curUrl = $pos !== false ? substr_replace($curUrl, "", $pos - 1) : $curUrl; 
+                                    $prefix = ((strpos($_SERVER['REQUEST_URI'], '?')) !== false) ? '&' : '?';
                                 ?>
                                 <ul>
-                                    <li><a href="<?=$curUrl . '&sort=cost-asc'?>">Cost low to high</a></li>
-                                    <li><a href="<?=$curUrl . '&sort=cost-desc'?>">Cost hight to low</a></li>
-                                    <li><a href="<?=$curUrl . '&sort=sale-asc'?>">Sales low to high</a></li>
-                                    <li><a href="<?=$curUrl . '&sort=sale-desc'?>">Sales high to low</a></li>
-                                    <li><a href="<?=$curUrl . '&sort=view-asc'?>">Top view low to high</a></li>
-                                    <li><a href="<?=$curUrl . '&sort=view-desc'?>">Top view high to low</a></li>
+
+                                    <li><a href="<?=$curUrl . $prefix . 'sort=cost-asc'?>">Cost low to high</a></li>
+                                    <li><a href="<?=$curUrl . $prefix . 'sort=cost-desc'?>">Cost hight to low</a></li>
+                                    <li><a href="<?=$curUrl . $prefix . 'sort=sale-asc'?>">Sales low to high</a></li>
+                                    <li><a href="<?=$curUrl . $prefix . 'sort=sale-desc'?>">Sales high to low</a></li>
+                                    <li><a href="<?=$curUrl . $prefix . 'sort=view-asc'?>">Top view low to high</a></li>
+                                    <li><a href="<?=$curUrl . $prefix . 'sort=view-desc'?>">Top view high to low</a></li>
                                 </ul>
                             </div>
                             <div class="clear"></div>
